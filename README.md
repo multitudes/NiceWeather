@@ -1,4 +1,7 @@
-# SmallWeatherApp
+
+<img src="icons/weather.svg" width="100"  title="app">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+# Nice Weather App
 
 ### Weather App Challenge
 Build a small app which displays a weather forecast for Berlin using http://openweathermap.org/
