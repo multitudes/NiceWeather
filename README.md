@@ -147,5 +147,15 @@ Time to do the layout in my views.
 I will add a picker with a list of cities to chose from. This can be customized later to add more cities, or the user can add cities  to the app.
 For the wind animation I will use an icon in SF Symbols which will rotate with a speed depending of the intensity of the wind.
 
+
+### Accessibility
+Where needed I added labels to buttons that would be difficult for Voiceover to spell like in the sharing button:
+```
+            .navigationBarItems(trailing:
+                Button(action: {}) {Image(systemName: "square.and.arrow.up")
+                                    .accessibility(label: Text("share"))
+                })
+```
+
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
