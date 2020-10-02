@@ -70,7 +70,20 @@ This is a preview of the API response for Berlin using http://openweathermap.org
 
 From the API response I will build the model as a struct conforming to the Codable protocol.
 
-
+```swift
+struct CurrentWeather: Codable {
+      var coord: Coordinates?
+      var weather: [Weather]?
+      var base: Base?
+      var main: MainWeatherData?
+      var visibility: Double?
+      var wind: Wind?
+      var clouds: Cloud?
+      var dt: Int?
+      var sys: Sys?
+      var cod: Int?
+}
+```
 
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
