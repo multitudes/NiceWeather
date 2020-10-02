@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct City {
+struct Location {
     var city: String
     var countryCode: String
 }

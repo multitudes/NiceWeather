@@ -10,18 +10,28 @@ import Foundation
 class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?
-    @Published var currentCity: City?
+    @Published var currentCity: Location?
     
     init() {
-        if let city = currentCity {
-            updateWeather(for: city)
+        if let location = currentCity {
+            updateWeather(for: location)
         } else {
-            updateWeather(for: City(city: "Berlin", countryCode: "DE"))
+            updateWeather(for: Location(city: "Berlin", countryCode: "DE"))
         }
     }
-
-    func updateWeather(for city: City){
-
+    
+    func updateWeather(for location: Location){
+        NetworkManager.shared.getWeather(for: location.city, country: location.countryCode) { result in
+            switch result {
+                case .success(let response):
+                    print(response)
+                    self.currentWeather = response
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
-   
+    
 }
+
+
