@@ -67,8 +67,8 @@ This is a preview of the API response for Berlin using http://openweathermap.org
 ```
 
 ### The Model
-
-From the API response I will build the model as a struct conforming to the Codable protocol.
+The model is indipendent from the view and closely matches the response I get from the API.
+From the API response I will build the model as a struct conforming to the Codable protocol. From the docs I read that these variables are not guaranteed to exist in every API response so I will make them optional. Also I will not probaly use all of them.
 
 ```swift
 struct CurrentWeather: Codable {
@@ -82,6 +82,43 @@ struct CurrentWeather: Codable {
       var dt: Int?
       var sys: Sys?
       var cod: Int?
+
+      struct Coordinates: Codable {
+      var lat: Double?
+      var lon: Double?
+      }
+      [...]
+
+}
+```
+
+### The viewmodel
+
+The viewmodel will use the model to convert the API call to data for our views. It will be a class conforming to the `ObservableObject` protocol and use a property wrapper `@Published` to pass the data to our views. When a published property changes, SwiftUI will refresh our views automatically. This class will be our source of truth!
+Also the app will remember the last selected city or preferred city.
+
+```swift
+class WeatherModel: ObservableObject {
+    
+    @Published private(set) var currentWeather: CurrentWeather?
+    @Published var currentCity: City?
+    
+    [...]
+```
+
+In SwiftUI we do not have the files AppDelagate.swift and Scene.swift anymore, our data will be initialized in the `NiceWeatherApp.swift` file as an `environmentObject`.
+
+```swift
+import SwiftUI
+
+@main
+struct NiceWeatherApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(WeatherModel())
+        }
+    }
 }
 ```
 
