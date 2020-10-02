@@ -9,14 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var model: WeatherModel
+    @EnvironmentObject var city: Location = WeatherModel.currentCity
     var body: some View {
-        VStack {
-            Text("\(model.currentWeather?.name ?? "")")
-                .padding()
-            Text("\(model.currentWeather?.clouds?.all ?? 0)")
-                .padding()
-            Image(systemName: "line.3.crossed.swirl.circle.fill")
-
+        NavigationView {
+            VStack {
+                Text("\(model.currentWeather?.name ?? "")")
+                    .padding()
+                Text("\(model.currentWeather?.clouds?.all ?? 0)")
+                    .padding()
+                Image(systemName: "line.3.crossed.swirl.circle.fill")
+                
+            }
+            .navigationBarTitle(Text("\(model.currentWeather?.name ?? "")"))
+            .navigationBarItems(trailing:
+                                Button(action: {})
+                                    {Image(systemName: "square.and.arrow.up")})
         }
 
     }
