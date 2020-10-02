@@ -159,3 +159,4 @@ Where needed I added labels to buttons that would be difficult for Voiceover to 
 
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
+- App Icon from Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> and resized with [Sketch](https://www.sketch.com) 
