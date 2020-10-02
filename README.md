@@ -143,7 +143,9 @@ Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `
 
 ### My Data
 I get in the console the converted json data. 
-Time to do the layout in my views
+Time to do the layout in my views. 
+I will add a picker with a list of cities to chose from. This can be customized later to add more cities, or the user can add cities  to the app.
+For the wind animation I will use an icon in SF Symbols which will rotate with a speed depending of the intensity of the wind.
 
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
