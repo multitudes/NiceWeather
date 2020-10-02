@@ -68,24 +68,27 @@ This is a preview of the API response for Berlin using http://openweathermap.org
 
 ### The Model
 The model is indipendent from the view and closely matches the response I get from the API.
-From the API response I will build the model as a struct conforming to the Codable protocol. From the docs I read that these variables are not guaranteed to exist in every API response so I will make them optional. Also I will not probaly use all of them.
+From the API response I will build the model as a struct conforming to the Codable protocol. From the docs I read that some of these variables are not guaranteed to exist in every API response so I will make them optional. Also I will not probaly use all of them.
 
 ```swift
 struct CurrentWeather: Codable {
-      var coord: Coordinates?
+      var coord: Coordinates
       var weather: [Weather]?
       var base: Base?
-      var main: MainWeatherData?
+      var main: MainWeatherData
       var visibility: Double?
-      var wind: Wind?
-      var clouds: Cloud?
+      var wind: Wind
+      var clouds: Cloud
       var dt: Int?
       var sys: Sys?
-      var cod: Int?
+      var timezone: Int
+      var id: Int
+      var name: String
+      var cod: Int
 
       struct Coordinates: Codable {
-      var lat: Double?
-      var lon: Double?
+          var lat: Double
+          var lon: Double
       }
       [...]
 
