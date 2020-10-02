@@ -12,6 +12,7 @@ struct NiceWeatherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(WeatherModel())
         }
     }
 }
