@@ -29,28 +29,33 @@ struct ContentView: View {
             VStack {
                 Text("\(weatherCity)".capitalized).font(.largeTitle).bold()
                     .padding()
-                
                 Text("\(weatherDescription)".capitalized).font(.largeTitle)
                     .padding()
-
-//                Text("Clouds: \(model.currentWeather?.clouds?.all ?? 0)")
-//                    .padding()
-                Image(systemName: "line.3.crossed.swirl.circle.fill").animation(Animation.linear(duration: windSpeed))
-                    
+                HStack {
+                    Image(systemName: "thermometer").font(.title)
+                    Text("\(temperature, specifier: "%.f") ℃").font(.largeTitle)
+                        .padding()
+                }
+                
+                HStack{
+                    Text("Wind speed \(windSpeed, specifier: "%.f")").font(.title)
+                    Image(systemName: "line.3.crossed.swirl.circle.fill").font(.system(size: 33, weight: .heavy))
+                    .animation(Animation.linear(duration: windSpeed))
                     .accessibility(label: Text("wind speed animation"))
-             Spacer()
+                }
+                Spacer()
             }
             .navigationBarTitle(Text(""))
             .navigationBarItems(trailing:
-                Button(action: {
-                    self.isSharedPresented = true
-                }) {Image(systemName: "square.and.arrow.up")
-                                    .accessibility(label: Text("share"))
-                }).sheet(isPresented: $isSharedPresented) {
-                    ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) is \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
-                }
+                                    Button(action: {
+                                        self.isSharedPresented = true
+                                    }) {Image(systemName: "square.and.arrow.up")
+                                        .accessibility(label: Text("share"))
+                                    }).sheet(isPresented: $isSharedPresented) {
+                                        ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) is \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
+                                    }
         }
-
+        
     }
 }
 
