@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: -
+
 class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?

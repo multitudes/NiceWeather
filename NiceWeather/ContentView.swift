@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var model: WeatherModel
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("\(model.currentWeather?.name ?? "")")
+                .padding()
+            Text("\(model.currentWeather?.clouds?.all ?? 0)")
+                .padding()
+            Image(systemName: "line.3.crossed.swirl.circle.fill")
+
+        }
+
     }
 }
 

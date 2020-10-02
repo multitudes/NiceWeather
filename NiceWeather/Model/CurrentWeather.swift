@@ -6,7 +6,7 @@
 //
 
 struct CurrentWeather: Codable {
-    var coord: Coordinates?
+    var coord: Coordinates
     var weather: [Weather]?
     var base: Base?
     var main: MainWeatherData?
@@ -15,18 +15,21 @@ struct CurrentWeather: Codable {
     var clouds: Cloud?
     var dt: Int?
     var sys: Sys?
+    var timezone: Int
+    var id: Int
+    var name: String
     var cod: Int?
     
     struct Coordinates: Codable {
-        var lon: Double?
-        var lat: Double?
+        var lon: Double
+        var lat: Double
     }
     
     struct Weather: Codable {
-        let id: Int?
-        let main: String?
-        var description: String?
-        var icon: String?
+        let id: Int
+        let main: String
+        var description: String
+        var icon: String
     }
     
     struct Base: Codable {}
