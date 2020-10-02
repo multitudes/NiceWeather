@@ -122,5 +122,25 @@ struct NiceWeatherApp: App {
 }
 ```
 
+### The NetworkManager
+I create a separate `NetworkManager` class which will take care of my network calls. In this class I will call its method `getWeather(for city:country:)` from my viewmodel to get the current weather data and pass it to the view.
+
+### ATS - Apple Transport Security
+I got the error message:
+>2020-10-02 14:42:14.713320+0200 NiceWeather[98370:5805877] App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
+
+Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `.plist` file:
+```
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+```
+
+### My Data
+I get in the console the converted json data. 
+Time to do the layout in my views
+
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
