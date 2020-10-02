@@ -17,6 +17,7 @@
 		45E59BD22527497E006FD2C5 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59BD12527497E006FD2C5 /* WeatherModel.swift */; };
 		45E59BD7252749E8006FD2C5 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59BD6252749E8006FD2C5 /* City.swift */; };
 		45E59BDF2527504A006FD2C5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59BDE2527504A006FD2C5 /* NetworkManager.swift */; };
+		45E59BF825277117006FD2C5 /* ShareWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59BF725277117006FD2C5 /* ShareWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		45E59BD12527497E006FD2C5 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		45E59BD6252749E8006FD2C5 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		45E59BDE2527504A006FD2C5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		45E59BF725277117006FD2C5 /* ShareWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */,
 				45E59B9425274819006FD2C5 /* ContentView.swift */,
+				45E59BF725277117006FD2C5 /* ShareWeather.swift */,
 				45E59BDE2527504A006FD2C5 /* NetworkManager.swift */,
 				45E59BC025274884006FD2C5 /* Model */,
 				45E59B962527481A006FD2C5 /* Assets.xcassets */,
@@ -282,6 +285,7 @@
 				45E59BDF2527504A006FD2C5 /* NetworkManager.swift in Sources */,
 				45E59B9525274819006FD2C5 /* ContentView.swift in Sources */,
 				45E59BD7252749E8006FD2C5 /* City.swift in Sources */,
+				45E59BF825277117006FD2C5 /* ShareWeather.swift in Sources */,
 				45E59BCD252748D9006FD2C5 /* CurrentWeather.swift in Sources */,
 				45E59BD22527497E006FD2C5 /* WeatherModel.swift in Sources */,
 				45E59B9325274819006FD2C5 /* NiceWeatherApp.swift in Sources */,
@@ -454,7 +458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -476,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
