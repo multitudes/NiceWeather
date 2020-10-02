@@ -16,13 +16,15 @@ struct ContentView: View {
                 Text("Clouds: \(model.currentWeather?.clouds?.all ?? 0)")
                     .padding()
                 Image(systemName: "line.3.crossed.swirl.circle.fill")
-                
+                    .accessibility(label: Text("wind speed animation"))
              Spacer()
             }
             .navigationBarTitle(Text("\(model.currentWeather?.name ?? "")"))
             .navigationBarItems(trailing:
                                 Button(action: {})
-                                    {Image(systemName: "square.and.arrow.up")})
+                                    {Image(systemName: "square.and.arrow.up")
+                                    .accessibility(label: Text("share"))
+                                })
         }
 
     }
