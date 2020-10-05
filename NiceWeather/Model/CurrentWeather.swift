@@ -18,7 +18,7 @@ struct CurrentWeather: Codable {
     var clouds: Cloud?
     var dt: Date
     var sys: Sys?
-    //var timezone: Int
+    var timezone: Int
     var id: Int
     var name: String
     var cod: Int

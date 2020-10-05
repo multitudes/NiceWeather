@@ -19,9 +19,19 @@ struct ContentView: View {
     var date: String {
         let date = model.currentWeather?.dt ?? Date()
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
         formatter.dateFormat = "EEEE, MMMM dd, yyyy"
         return formatter.string(from: date)
     }
+    
+    var time: String {
+        let date = model.currentWeather?.dt ?? Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: date)
+    }
+    
     var weatherDescription: String {
         model.currentWeather?.weather[0].description ?? ""
     }
@@ -58,7 +68,7 @@ struct ContentView: View {
 //                    Spacer(minLength: 20)
                     Text("\(weatherCity)".capitalized).font(.title).bold()
                     
-                    Text("\(date)")
+                    Text("\(date) \(time)")
                         .multilineTextAlignment(.center)
                         .font(.body).opacity(0.5)
                         .padding(.bottom)
