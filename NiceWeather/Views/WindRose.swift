@@ -14,8 +14,12 @@ struct WindRose: View {
     @State private var isAnimating = false
     
     var windRoseAnimation: Animation {
-        Animation.linear(duration: 8/windSpeed)
+        if isAnimating {
+        return Animation.linear(duration: 8/windSpeed)
             .repeatForever(autoreverses: false)
+        } else {
+            return Animation.default
+        }
     }
     
     var body: some View {
@@ -28,7 +32,7 @@ struct WindRose: View {
             if Int(windSpeed) != 0 {
                 Image(systemName: "line.3.crossed.swirl.circle.fill").font(.system(size: 33, weight: .heavy)).accessibility(label: Text("wind speed animation"))
                     .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
-                    .animation(self.isAnimating ? windRoseAnimation : .default)
+                    .animation(windRoseAnimation)
                     .onAppear { self.isAnimating = true }
                     .onDisappear { self.isAnimating = false }
             } else {

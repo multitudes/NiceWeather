@@ -120,7 +120,6 @@ struct ContentView: View {
                 timer?.invalidate()
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
-            
         }
         
     }
