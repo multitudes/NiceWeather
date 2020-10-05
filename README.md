@@ -18,7 +18,7 @@ Build a small app which displays a weather forecast for Berlin using http://open
 
 ## The execution
 
-The app will be entirely written in Swift without external libraries. I will develop the app using the new Apple framework SwiftUI universal.  
+The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.  
 
 <br>
 <p align="center">
@@ -83,25 +83,25 @@ From the API response I will build the model as a struct conforming to the Codab
 
 ```swift
 struct CurrentWeather: Codable {
-      var coord: Coordinates
-      var weather: [Weather]?
-      var base: Base?
-      var main: MainWeatherData
-      var visibility: Double?
-      var wind: Wind
-      var clouds: Cloud
-      var dt: Int?
-      var sys: Sys?
-      var timezone: Int
-      var id: Int
-      var name: String
-      var cod: Int
+    var coord: Coordinates
+    var weather: [Weather]
+    var base: Base?
+    var main: MainWeatherData?
+    var visibility: Double?
+    var wind: Wind?
+    var clouds: Cloud?
+    var dt: Date
+    var sys: Sys?
+    var timezone: Int
+    var id: Int
+    var name: String
+    var cod: Int
 
-      struct Coordinates: Codable {
-          var lat: Double
-          var lon: Double
-      }
-      [...]
+    struct Coordinates: Codable {
+        var lat: Double
+        var lon: Double
+    }
+    [...]
 
 }
 ```
