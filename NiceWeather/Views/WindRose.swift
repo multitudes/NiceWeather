@@ -40,6 +40,6 @@ struct WindRose: View {
 
 struct WindRose_Previews: PreviewProvider {
     static var previews: some View {
-        WindRose(windSpeed: 1)
+        WindRose(windSpeed: 1.2)
     }
 }

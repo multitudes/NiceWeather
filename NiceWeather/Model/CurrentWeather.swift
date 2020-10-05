@@ -47,7 +47,7 @@ struct CurrentWeather: Codable {
     }
     
     struct Wind: Codable {
-        let speed: Double?
+        let speed: Double
         let deg: Int?
     }
     

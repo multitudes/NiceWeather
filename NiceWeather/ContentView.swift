@@ -10,12 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var model: WeatherModel = WeatherModel()
-    @EnvironmentObject var userStore: UserStore
     
     @State var timer: Timer?
     @State private var isSharedPresented: Bool = false
     //@Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State var citySelection: Location = Location(city: "Berlin", countryCode: "DE")
+    @State var citySelection: Location = WeatherModel.loadLastLocation()
+    
     var date: String {
         let date = model.currentWeather?.dt ?? Date()
         let formatter = DateFormatter()
@@ -43,15 +43,16 @@ struct ContentView: View {
     var humidity: Int {
         (model.currentWeather?.main?.humidity ?? 0)
     }
-
+    
     
     var body: some View {
         GeometryReader { geo in
             ZStack{
                 ShareButton(isSharedPresented: $isSharedPresented)
                     .position(x: geo.size.width - 40, y:  40)
+                    .accentColor(.purple)
                 VStack {
-                    
+//                    Spacer(minLength: 20)
                     Text("\(weatherCity)".capitalized).font(.title).bold()
                     
                     Text("\(date)")
@@ -71,29 +72,37 @@ struct ContentView: View {
                     }
                     Text("\(weatherDescription)".capitalized).font(.body).bold()
                         .padding(.bottom).opacity(0.5)
-                    
+
                     HStack {
                         Text("\(tempMax, specifier: "%.f")°").font(.title2).bold()
                         Text("\(tempMin, specifier: "%.f")°").font(.title2).opacity(0.8)
                     }
                     Text("Humidity: \(humidity) %").font(.title2).bold()
-                        .padding().opacity(0.8)
+                        .padding(5).opacity(0.8)
                     WindRose(windSpeed: windSpeed)
-                    //Text(model.preferredLocations.debugDescription)
+                       // .padding(5)
                     
-//                   / LocationPicker(location: $model.currentLocation)
-                    Picker(selection: $model.currentLocation, label: Spacer()) {
-                        ForEach(model.preferredLocations, id: \.self) {
-                            Text($0.city)
+                        HStack{
+                            
+                            
+                        Picker(selection: $citySelection, label: Text("dsf") ) {
+                            ForEach(model.preferredLocations, id: \.self) {
+                                Text($0.city).font(.system(.title2))
+                            }
                         }
-                    }
-//                    .onChange(of: model.currentLocation, perform: { value in
-//                        model.updateLocation(with: value)
-//                    })
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(width: 150, height: 50, alignment: .center).padding()
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .onChange(of: citySelection, perform: { value in
+                            model.updateLocation(with: value)
+                            model.updateWeather()
+                        })
+                            
+                        }.frame(width: geo.size.width, alignment: .center)
                     
                     
-                }.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
-                //.scaleEffect(geo.size.height / geo.size.width * 0.6 )
+                }//.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
+                
                 
                 
             }
@@ -101,11 +110,8 @@ struct ContentView: View {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) on \(date): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
             }
             .onAppear() {
-                citySelection = userStore.currentUserInfo?.currentLocation ?? Location(city: "Berlin", countryCode: "DE")
-            }
-            .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
-                                                    model.updateWeather(for: model.currentLocation)})
+                                                    model.updateWeather()})
             }
             .onDisappear() {
                 timer?.invalidate()

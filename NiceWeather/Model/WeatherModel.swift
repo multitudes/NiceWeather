@@ -10,46 +10,53 @@ import SwiftUI
 // MARK: -
 
 class WeatherModel: ObservableObject {
-    @EnvironmentObject var userStore: UserStore
-    @Published private(set) var currentWeather: CurrentWeather?
+    
+    @Published  var currentWeather: CurrentWeather?
     
     @Published var preferredLocations = loadLocations() {
-      didSet {
-        persistLocations()
-      }
+        didSet {
+            persistLocations()
+        }
     }
+    
     @Published var currentLocation: Location = loadLastLocation() {
         didSet {
             persistLastLocation()
         }
     }
+    
     @Published var image: UIImage? = nil
+    
     @Published var isDayTime: Bool = true
     
     static let locationsKey = "Locations"
     static let lastLocationKey = "Lastlocation"
-    static let defaultLocations = [
-      Location(city: "Berlin", countryCode: "DE"),
-      Location(city: "Tokyo", countryCode: "JP"),
-      Location(city: "Paris", countryCode: "FR"),
-    ]
     static let defaultLastLocation = Location(city: "Berlin", countryCode: "DE")
+    static let defaultLocations = [
+        Location(city: "Berlin", countryCode: "DE"),
+        Location(city: "Tokyo", countryCode: "JP"),
+        Location(city: "Paris", countryCode: "FR"),
+    ]
+    
     init() {
-            updateWeather(for: currentLocation)
+        updateWeather()
     }
     
-    func updateWeather(for location: Location?){
-        let loc = location ?? Location(city: "Berlin", countryCode: "DE")
+    func updateWeather(){
+        let loc = WeatherModel.loadLastLocation()
         NetworkManager.shared.getWeather(for: loc.city, country: loc.countryCode) { result in
             switch result {
                 case .success(let response):
-                    print(response)
+                    print(response) //check
                     self.currentWeather = response
                     let icon = response.weather[0].icon
                     self.updateImage(icon: icon)
+                    // I found out that the images returned at night time at the location have a format ending with n and are better suitable for displaying in dark mode
                     if icon[2] == "n" {
                         print("?")
                         self.isDayTime = false
+                    } else {
+                        self.isDayTime = true
                     }
                 case .failure(let error):
                     print(error)
@@ -68,9 +75,9 @@ class WeatherModel: ObservableObject {
     static func loadLocations() -> [Location] {
         let savedLocations = UserDefaults.standard.object(forKey: WeatherModel.locationsKey)
         if let savedLocations = savedLocations as? Data {
-          let decoder = JSONDecoder()
-          return (try? decoder.decode([Location].self, from: savedLocations))
-            ?? WeatherModel.defaultLocations
+            let decoder = JSONDecoder()
+            return (try? decoder.decode([Location].self, from: savedLocations))
+                ?? WeatherModel.defaultLocations
         }
         return WeatherModel.defaultLocations
     }
@@ -84,8 +91,9 @@ class WeatherModel: ObservableObject {
         return WeatherModel.defaultLastLocation
     }
     
-    func updateLocation(with location: Published<Location>){
-        self._currentLocation = location
+    func updateLocation(with location: Location){
+        print(location)
+        self.currentLocation = location
     }
     
     func persistLocations() {
@@ -96,6 +104,7 @@ class WeatherModel: ObservableObject {
     }
     
     func persistLastLocation() {
+        print("persistLastLocation")
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(currentLocation) {
             UserDefaults.standard.set(encoded, forKey: WeatherModel.lastLocationKey)
