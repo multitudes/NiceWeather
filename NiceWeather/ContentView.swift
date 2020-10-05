@@ -121,6 +121,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isSharedPresented) {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(date) \(time): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
+                    .environment(\.colorScheme, model.isDayTime ? .light : .dark )
             }
             .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
