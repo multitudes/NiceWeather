@@ -83,8 +83,16 @@ struct ContentView: View {
                     WindRose(windSpeed: windSpeed)
                     //Text(model.preferredLocations.debugDescription)
                     
-                    LocationPicker(location: $model.currentLocation)
-                        .environmentObject(model)
+//                   / LocationPicker(location: $model.currentLocation)
+                    Picker(selection: $model.currentLocation, label: Spacer()) {
+                        ForEach(model.preferredLocations, id: \.self) {
+                            Text($0.city)
+                        }
+                    }
+//                    .onChange(of: model.currentLocation, perform: { value in
+//                        model.updateLocation(with: value)
+//                    })
+                    
                     
                 }.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
                 //.scaleEffect(geo.size.height / geo.size.width * 0.6 )

@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct LocationPicker: View {
-    @EnvironmentObject var model: WeatherModel
-    @Binding var location: Location
-    var body: some View {
-        Picker(selection: $location, label: Spacer()) {
-            ForEach(model.preferredLocations, id: \.self) {
-                Text($0.city)
-            }
-        }
-        
-    }
-}
+//struct LocationPicker: View {
+//    @EnvironmentObject var model: WeatherModel
+//    @Binding var location: Location
+//    var body: some View {
+//        Picker(selection: $location, label: Spacer()) {
+//            ForEach(model.preferredLocations, id: \.self) {
+//                Text($0.city)
+//            }
+//        }.onChange(of: location, perform: { value in
+//            model.updateLocation(with: value)
+//        })
+//        
+//    }
+//}
 
 
 //struct GenrePicker: View {
@@ -33,9 +35,9 @@ struct LocationPicker: View {
 //      .pickerStyle(WheelPickerStyle())
 //    }
 //}
-
-struct LocationPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationPicker(location: .constant(Location(city: "Berlin", countryCode: "de")))
-    }
-}
+//
+//struct LocationPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LocationPicker(location: .constant(Location(city: "Berlin", countryCode: "de")))
+//    }
+//}

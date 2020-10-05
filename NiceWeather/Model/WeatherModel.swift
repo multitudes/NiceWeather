@@ -68,6 +68,10 @@ class WeatherModel: ObservableObject {
         return WeatherModel.defaultLocations
     }
     
+    func updateLocation(with location: Published<Location>){
+        self._currentLocation = location
+    }
+    
     func persistLocations() {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(preferredLocations) {
