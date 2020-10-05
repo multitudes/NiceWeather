@@ -13,7 +13,7 @@ struct NiceWeatherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(WeatherModel())
+                .environmentObject(WeatherModel(location: Location(city: "Berlin", countryCode: "De")))
                 //.environment(\.colorScheme, .dark) // or .dark
         }
     }

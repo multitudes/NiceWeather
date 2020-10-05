@@ -81,7 +81,11 @@ struct ContentView: View {
                     Text("Humidity: \(humidity) %").font(.title2).bold()
                         .padding().opacity(0.8)
                     WindRose(windSpeed: windSpeed)
-                    Text(model.preferredLocations.debugDescription)
+                    //Text(model.preferredLocations.debugDescription)
+                    
+                    LocationPicker(location: $model.currentLocation)
+                        .environmentObject(model)
+                    
                 }.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
                 //.scaleEffect(geo.size.height / geo.size.width * 0.6 )
                 
@@ -92,7 +96,7 @@ struct ContentView: View {
             }
             .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
-                                                    model.updateWeather(for: model.currentCity)})
+                                                    model.updateWeather(for: model.currentLocation)})
             }
             .onDisappear() {
                 timer?.invalidate()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Codable, Hashable {
     var city: String
     var countryCode: String
 }

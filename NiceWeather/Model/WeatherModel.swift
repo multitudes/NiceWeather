@@ -18,7 +18,7 @@ class WeatherModel: ObservableObject {
         persistLocations()
       }
     }
-    @Published var currentCity: Location?
+    @Published var currentLocation: Location
     @Published var image: UIImage? = nil
     @Published var isDayTime: Bool = true
     
@@ -29,8 +29,9 @@ class WeatherModel: ObservableObject {
       Location(city: "Paris", countryCode: "FR"),
     ]
     
-    init() {
-            updateWeather(for: currentCity)
+    init(location: Location) {
+        self.currentLocation = location
+            updateWeather(for: currentLocation)
     }
     
     func updateWeather(for location: Location?){
@@ -72,6 +73,15 @@ class WeatherModel: ObservableObject {
         if let encoded = try? encoder.encode(preferredLocations) {
             UserDefaults.standard.set(encoded, forKey: WeatherModel.locationsKey)
         }
+    }
+    
+    func addlocation(city: String, country: String) {
+        let newLocation = Location(city: city, countryCode: country)
+        preferredLocations.append(newLocation)
+    }
+    
+    func deleteLocation(at offsets: IndexSet) {
+        preferredLocations.remove(atOffsets: offsets)
     }
 }
 
