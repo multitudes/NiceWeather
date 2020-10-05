@@ -7,27 +7,17 @@
 
 import SwiftUI
 
-struct ShareButton: View {
-    @Binding var isSharedPresented: Bool
-    
-    var body: some View {
-        
-        Button(action: {
-            self.isSharedPresented = true
-        }) {
-            Image(systemName: "square.and.arrow.up")
-                .accessibility(label: Text("share"))
-        }
-    }
-}
+
 
 
 struct ContentView: View {
+    
     @EnvironmentObject var model: WeatherModel
+    
     @State var timer: Timer?
     @State private var isSharedPresented: Bool = false
     //@Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State var isNightTime: Bool = false
+
     var date: String {
         let date = model.currentWeather?.dt ?? Date()
         let formatter = DateFormatter()
@@ -91,8 +81,11 @@ struct ContentView: View {
                     Text("Humidity: \(humidity) %").font(.title2).bold()
                         .padding().opacity(0.8)
                     WindRose(windSpeed: windSpeed)
-                }.position(x: geo.size.width / 2, y: geo.size.height / 2 )
-                .scaleEffect(geo.size.height / geo.size.width * 0.6 )
+                    Text(model.preferredLocations.debugDescription)
+                }.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
+                //.scaleEffect(geo.size.height / geo.size.width * 0.6 )
+                
+                
             }
             .sheet(isPresented: $isSharedPresented) {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) on \(date): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
@@ -104,7 +97,7 @@ struct ContentView: View {
             .onDisappear() {
                 timer?.invalidate()
             }
-            .preferredColorScheme(isNightTime ?  .dark : .light)
+            .preferredColorScheme(model.isDayTime ? .light : .dark )
             
         }
         

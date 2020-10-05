@@ -12,9 +12,23 @@ import SwiftUI
 class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?
+    
+    @Published var preferredLocations = loadLocations() {
+      didSet {
+        persistLocations()
+      }
+    }
     @Published var currentCity: Location?
     @Published var image: UIImage? = nil
-
+    @Published var isDayTime: Bool = true
+    
+    static let locationsKey = "Locations"
+    static let defaultLocations = [
+      Location(city: "Berlin", countryCode: "DE"),
+      Location(city: "Tokyo", countryCode: "JP"),
+      Location(city: "Paris", countryCode: "FR"),
+    ]
+    
     init() {
             updateWeather(for: currentCity)
     }
@@ -28,6 +42,7 @@ class WeatherModel: ObservableObject {
                     self.currentWeather = response
                     let icon = response.weather[0].icon
                     self.updateImage(icon: icon)
+                    
                 case .failure(let error):
                     print(error)
             }
@@ -42,6 +57,22 @@ class WeatherModel: ObservableObject {
         }
     }
     
+    static func loadLocations() -> [Location] {
+        let savedLocations = UserDefaults.standard.object(forKey: WeatherModel.locationsKey)
+        if let savedLocations = savedLocations as? Data {
+          let decoder = JSONDecoder()
+          return (try? decoder.decode([Location].self, from: savedLocations))
+            ?? WeatherModel.defaultLocations
+        }
+        return WeatherModel.defaultLocations
+    }
+    
+    func persistLocations() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(preferredLocations) {
+            UserDefaults.standard.set(encoded, forKey: WeatherModel.locationsKey)
+        }
+    }
 }
 
 
