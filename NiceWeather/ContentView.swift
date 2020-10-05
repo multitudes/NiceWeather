@@ -31,14 +31,17 @@ struct ContentView: View {
     var windSpeed: Double {
         model.currentWeather?.wind?.speed ?? 0.0
     }
+    var direction: Double {
+        model.currentWeather?.wind?.deg ?? 0.0
+    }
     var temperature: Double {
-        (model.currentWeather?.main?.temp ?? 273.15) - 273.15
+        model.currentWeather?.main?.temp ?? 0.0
     }
     var tempMin: Double {
-        (model.currentWeather?.main?.tempMin ?? 273.15) - 273.15
+        model.currentWeather?.main?.tempMin ?? 0.0
     }
     var tempMax: Double {
-        (model.currentWeather?.main?.tempMax ?? 273.15) - 273.15
+        model.currentWeather?.main?.tempMax ?? 0.0
     }
     var humidity: Int {
         (model.currentWeather?.main?.humidity ?? 0)
@@ -79,7 +82,7 @@ struct ContentView: View {
                     }
                     Text("Humidity: \(humidity) %").font(.title2).bold()
                         .padding(5).opacity(0.8)
-                    WindRose(windSpeed: windSpeed)
+                    WindRose(windSpeed: windSpeed, direction: direction)
                        // .padding(5)
                     
                         HStack{

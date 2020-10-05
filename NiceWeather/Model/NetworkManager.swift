@@ -21,7 +21,7 @@ class NetworkManager {
     
     // example of my API call
     //http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&APPID=385417c76d45ab1972316b6ffd8b6efa
-    
+    //http://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&units=metric&APPID=385417c76d45ab1972316b6ffd8b6efa
     private let baseURL = "http://api.openweathermap.org/data/2.5/weather?q="
     private let myAPI = "385417c76d45ab1972316b6ffd8b6efa"
     let cache           = NSCache<NSString, UIImage>()
@@ -29,7 +29,7 @@ class NetworkManager {
     private init() {}
     
     func getWeather(for city: String, country: String, completed: @escaping (Result<CurrentWeather, NWError>) -> Void) {
-        let endpoint = baseURL + "\(city),\(country)&APPID=\(myAPI)"
+        let endpoint = baseURL + "\(city),\(country)&units=metric&APPID=\(myAPI)"
         print("endpoint: \(endpoint)")
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidURL))

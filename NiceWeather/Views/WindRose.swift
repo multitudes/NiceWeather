@@ -10,6 +10,7 @@ import SwiftUI
 struct WindRose: View {
     
     var windSpeed: Double
+    var direction: Double
     @State private var isAnimating = false
     
     var windRoseAnimation: Animation {
@@ -21,8 +22,8 @@ struct WindRose: View {
         VStack {
             HStack{
                 Image(systemName: "wind")
-                Text("Wind speed: \(windSpeed, specifier: "%.f")")
-            }.font(Font.title2.monospacedDigit())
+                Text("Wind speed: \(windSpeed, specifier: "%.1f") m/s ")
+                Image(systemName: "paperplane.fill").rotationEffect(Angle(degrees: -45 + direction - 180))            }.font(Font.title2.monospacedDigit())
             .padding(5)
             if Int(windSpeed) != 0 {
                 Image(systemName: "line.3.crossed.swirl.circle.fill").font(.system(size: 33, weight: .heavy)).accessibility(label: Text("wind speed animation"))
@@ -40,6 +41,6 @@ struct WindRose: View {
 
 struct WindRose_Previews: PreviewProvider {
     static var previews: some View {
-        WindRose(windSpeed: 1.2)
+        WindRose(windSpeed: 1.2, direction: 45.0)
     }
 }
