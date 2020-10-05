@@ -8,6 +8,6 @@
 import Foundation
 
 struct Location: Codable, Hashable {
-    var city: String
-    var countryCode: String
+    var city: String = "Berlin"
+    var countryCode: String = "DE"
 }

@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: -
 
 class WeatherModel: ObservableObject {
-    
+    @EnvironmentObject var userStore: UserStore
     @Published private(set) var currentWeather: CurrentWeather?
     
     @Published var preferredLocations = loadLocations() {
@@ -18,19 +18,23 @@ class WeatherModel: ObservableObject {
         persistLocations()
       }
     }
-    @Published var currentLocation: Location
+    @Published var currentLocation: Location = loadLastLocation() {
+        didSet {
+            persistLastLocation()
+        }
+    }
     @Published var image: UIImage? = nil
     @Published var isDayTime: Bool = true
     
     static let locationsKey = "Locations"
+    static let lastLocationKey = "Lastlocation"
     static let defaultLocations = [
       Location(city: "Berlin", countryCode: "DE"),
       Location(city: "Tokyo", countryCode: "JP"),
       Location(city: "Paris", countryCode: "FR"),
     ]
-    
-    init(location: Location) {
-        self.currentLocation = location
+    static let defaultLastLocation = Location(city: "Berlin", countryCode: "DE")
+    init() {
             updateWeather(for: currentLocation)
     }
     
@@ -43,7 +47,10 @@ class WeatherModel: ObservableObject {
                     self.currentWeather = response
                     let icon = response.weather[0].icon
                     self.updateImage(icon: icon)
-                    
+                    if icon[2] == "n" {
+                        print("?")
+                        self.isDayTime = false
+                    }
                 case .failure(let error):
                     print(error)
             }
@@ -68,6 +75,15 @@ class WeatherModel: ObservableObject {
         return WeatherModel.defaultLocations
     }
     
+    static func loadLastLocation() -> Location {
+        let savedLastLocation = UserDefaults.standard.object(forKey: WeatherModel.lastLocationKey)
+        if let lastLocation = savedLastLocation as? Data {
+            let decoder = JSONDecoder()
+            return (try? decoder.decode(Location.self, from: lastLocation)) ?? WeatherModel.defaultLastLocation
+        }
+        return WeatherModel.defaultLastLocation
+    }
+    
     func updateLocation(with location: Published<Location>){
         self._currentLocation = location
     }
@@ -76,6 +92,13 @@ class WeatherModel: ObservableObject {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(preferredLocations) {
             UserDefaults.standard.set(encoded, forKey: WeatherModel.locationsKey)
+        }
+    }
+    
+    func persistLastLocation() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(currentLocation) {
+            UserDefaults.standard.set(encoded, forKey: WeatherModel.lastLocationKey)
         }
     }
     

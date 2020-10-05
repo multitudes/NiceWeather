@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View {
     
-    @EnvironmentObject var model: WeatherModel
+    @StateObject var model: WeatherModel = WeatherModel()
+    @EnvironmentObject var userStore: UserStore
     
     @State var timer: Timer?
     @State private var isSharedPresented: Bool = false
     //@Environment(\.colorScheme) var colorScheme: ColorScheme
-
+    @State var citySelection: Location = Location(city: "Berlin", countryCode: "DE")
     var date: String {
         let date = model.currentWeather?.dt ?? Date()
         let formatter = DateFormatter()
@@ -101,6 +99,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isSharedPresented) {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) on \(date): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
+            }
+            .onAppear() {
+                citySelection = userStore.currentUserInfo?.currentLocation ?? Location(city: "Berlin", countryCode: "DE")
             }
             .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
