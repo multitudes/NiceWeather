@@ -22,8 +22,9 @@ The app will be entirely written in Swift without external libraries. I will dev
 
 <br>
 <p align="center">
-
-<img src="images/PushingBoundaries/pushingBoundaries2.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="ReadMe-Images/niceweather1.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/niceweather.gif" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
 
