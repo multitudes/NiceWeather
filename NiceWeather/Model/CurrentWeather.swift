@@ -12,7 +12,6 @@ struct CurrentWeather: Codable {
     var weather: [Weather]
     var base: Base?
     var main: MainWeatherData?
-    //var humidity: Int
     var visibility: Double?
     var wind: Wind?
     var clouds: Cloud?
