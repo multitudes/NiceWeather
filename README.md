@@ -18,7 +18,14 @@ Build a small app which displays a weather forecast for Berlin using http://open
 
 ## The execution
 
-The app will be entirely written in Swift without external libraries. I will develop the app using the new Apple framework SwiftUI universal and trhe MVVM design pattern.
+The app will be entirely written in Swift without external libraries. I will develop the app using the new Apple framework SwiftUI universal.  
+
+<br>
+<p align="center">
+
+<img src="images/PushingBoundaries/pushingBoundaries2.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<br></br>
 
 ### The API
 This is a preview of the API response for Berlin using http://openweathermap.org/ (I used JsonBeautify for the formatting):
