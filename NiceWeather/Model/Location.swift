@@ -1,5 +1,5 @@
 //
-//  City.swift
+//  Location.swift
 //  NiceWeather
 //
 //  Created by Laurent B on 02/10/2020.

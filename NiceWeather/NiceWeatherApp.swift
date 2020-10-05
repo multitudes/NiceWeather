@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct NiceWeatherApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(WeatherModel())
+                //.environment(\.colorScheme, .dark) // or .dark
         }
     }
 }

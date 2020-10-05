@@ -5,20 +5,23 @@
 //  Created by Laurent B on 02/10/2020.
 //
 
+import Foundation
+
 struct CurrentWeather: Codable {
     var coord: Coordinates
-    var weather: [Weather]?
+    var weather: [Weather]
     var base: Base?
     var main: MainWeatherData?
+    //var humidity: Int
     var visibility: Double?
     var wind: Wind?
     var clouds: Cloud?
-    var dt: Int?
+    var dt: Date
     var sys: Sys?
-    var timezone: Int
+    //var timezone: Int
     var id: Int
     var name: String
-    var cod: Int?
+    var cod: Int
     
     struct Coordinates: Codable {
         var lon: Double
@@ -35,12 +38,12 @@ struct CurrentWeather: Codable {
     struct Base: Codable {}
     
     struct MainWeatherData: Codable {
-        let temp: Double?
+        let temp: Double
         let feelsLike: Double?
-        let tempMin: Double?
-        let tempMax: Double?
+        let tempMin: Double
+        let tempMax: Double
         let pressure: Int?
-        let humidity: Int?
+        let humidity: Int
     }
     
     struct Wind: Codable {

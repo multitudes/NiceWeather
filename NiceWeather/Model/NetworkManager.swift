@@ -30,7 +30,7 @@ class NetworkManager {
     
     func getWeather(for city: String, country: String, completed: @escaping (Result<CurrentWeather, NWError>) -> Void) {
         let endpoint = baseURL + "\(city),\(country)&APPID=\(myAPI)"
-        print(endpoint)
+        print("endpoint: \(endpoint)")
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidURL))
             return
@@ -55,7 +55,9 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
+                //let dateFormatter = DateFormatter()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .secondsSince1970
                 let response = try decoder.decode(CurrentWeather.self, from: data)
                 DispatchQueue.main.async {
                     completed(.success(response))
@@ -64,6 +66,41 @@ class NetworkManager {
                 completed(.failure(.invalidData))
             }
         }
+        task.resume()
+    }
+    
+    func downloadImage(from icon: String, completed: @escaping (UIImage?) -> Void) {
+        let urlString: String = "http://openweathermap.org/img/wn/\(icon)@2x.png"
+            print("url: \(urlString)")
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            
+            guard let self = self,
+                error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    print("nil")
+                    completed(nil)
+                    return
+                }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            print("image")
+            completed(image)
+        }
+        
         task.resume()
     }
 }
