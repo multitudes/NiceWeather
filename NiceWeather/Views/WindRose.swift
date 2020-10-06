@@ -25,15 +25,19 @@ struct WindRose: View {
     var body: some View {
         VStack {
             HStack{
-                Image(systemName: "wind")
-                Text("Wind speed: \(windSpeed, specifier: "%.1f") m/s ").bold()
-                Image(systemName: "paperplane.fill").rotationEffect(Angle(degrees: -45 + direction - 180))
+                SFSymbols.wind
+                Text("Wind speed: \(windSpeed, specifier: "%.1f") m/s ")
+                    .bold()
+                SFSymbols.windDirection
+                    .rotationEffect(Angle(degrees: -45 + direction - 180))
             }
             .font(Font.title2.monospacedDigit())
             .padding(5)
             
             if Int(windSpeed) != 0 {
-                Image(systemName: "line.3.crossed.swirl.circle.fill").font(.system(size: 33, weight: .heavy)).accessibility(label: Text("wind speed animation"))
+                SFSymbols.windRose
+                    .font(.system(size: 33, weight: .heavy))
+                    .accessibility(label: Text("wind speed animation"))
                     .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
                     .animation(windRoseAnimation)
                     .onAppear { self.isAnimating = true }

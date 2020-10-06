@@ -18,9 +18,3 @@ struct TempMaxMin: View {
         }
     }
 }
-
-//struct TempMaxMin_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TempMaxMin()
-//    }
-//}

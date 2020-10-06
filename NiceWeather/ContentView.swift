@@ -7,8 +7,20 @@
 
 import SwiftUI
 
-enum Constant {
-    //static let Vspacing =
+enum UIHelper {
+    // Small hack on the Vstack spacing to adapt better on large devices like iPad:
+    static func createSpacing(geo: GeometryProxy) -> CGFloat {
+        return geo.size.height/50 + geo.size.width/100
+    }
+    static func createTitleSizeModifier(geo: GeometryProxy) -> CGFloat {
+        return 33 + geo.size.height / 40
+    }
+    static func createShareButtonFontAdjustment(geo: GeometryProxy) -> CGFloat {
+        return 10 + geo.size.width * 0.03
+    }
+    static func createShareButtonPaddingAdjustment(geo: GeometryProxy) -> CGPoint {
+        return  CGPoint(x: geo.size.width - (25 + geo.size.width / 70), y: 25 + geo.size.width / 70)
+    }
 }
 
 struct ContentView: View {
@@ -58,10 +70,7 @@ struct ContentView: View {
                 
                 ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
                 
-                // Small hack here on the Vstack spacing to adapt better on large devices like iPad:
-                VStack(spacing: geo.size.height/50
-                        + geo.size.width/100
-                ) {
+                VStack(spacing: UIHelper.createSpacing(geo: geo)) {
                     Spacer()
                     
                     CityTitle(city: weatherCity, geo: geo)

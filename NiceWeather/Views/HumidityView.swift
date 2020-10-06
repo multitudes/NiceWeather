@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HumidityView: View {
     var model: WeatherModel
+    
     var humidity: Int {
         model.currentWeather?.main.humidity ?? 0
     }

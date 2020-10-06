@@ -13,24 +13,17 @@ struct ShareButton: View {
     
     var geo: GeometryProxy
     
-    var adjustment: CGFloat {
-        25 + geo.size.width / 70
-    }
-    var fontAdjustment: CGFloat {
-        10 + geo.size.width * 0.03
-    }
-    
     var body: some View {
         
         Button(action: {
             self.isSharedPresented = true
         }) {
-            Image(systemName: "square.and.arrow.up")
-                .font(Font.system(size: fontAdjustment))
+            SFSymbols.shareButton
+                .font(Font.system(size: UIHelper.createShareButtonFontAdjustment(geo: geo)))
                 .accessibility(label: Text("share"))
             
         }
-        .position(x: geo.size.width - adjustment, y:  adjustment)
+        .position(UIHelper.createShareButtonPaddingAdjustment(geo: geo))
         .accentColor(.purple)
     }
 }

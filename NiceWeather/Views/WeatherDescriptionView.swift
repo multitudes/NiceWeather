@@ -12,21 +12,18 @@ struct WeatherDescriptionView: View {
     var weatherDescription: String
     var body: some View {
         VStack{
-        ZStack{
-            Circle().frame(width: 80, height: 80, alignment: .center).foregroundColor(.blue).opacity(0.4)
-            Image(uiImage: image ?? UIImage(named: "weather")!)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
+            ZStack{
+                Circle()
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .foregroundColor(.blue)
+                    .opacity(0.4)
+                Image(uiImage: image ?? Placeholders.WeatherImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+            }
+            Text("\(weatherDescription)".capitalized).font(.body).bold()
+                .padding(.bottom).opacity(0.5)
         }
-        Text("\(weatherDescription)".capitalized).font(.body).bold()
-            .padding(.bottom).opacity(0.5)
     }
 }
-}
-
-//struct WeatherDescriptionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WeatherDescriptionView()
-//    }
-//}

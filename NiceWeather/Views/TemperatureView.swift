@@ -12,7 +12,8 @@ struct TemperatureView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "thermometer").font(.largeTitle)
+            SFSymbols.thermometer
+                .font(.largeTitle)
             Text("\(temperature, specifier: "%.f")°").font(.largeTitle)
         }
     }
