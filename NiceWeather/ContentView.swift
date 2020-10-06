@@ -60,16 +60,28 @@ struct ContentView: View {
     var tempMax: Double {
         model.currentWeather?.main.tempMax ?? 0.0
     }
-
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
     
+    var isiPhone: Bool {
+        Device.name.contains("iPhone")
+    }
+    var isiPad: Bool {
+        Device.name.contains("iPad")
+    }
     
     var body: some View {
         GeometryReader { geo in
             ZStack{
                 BackgroundGradient(geo: geo)
-                #if os(iOS)
-                ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
-                #endif
+                
+                if isiPhone || isiPad {
+                    ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
+                } else {
+                    EmptyView()
+                }
+                
                 VStack(spacing: UIHelper.createSpacing(geo: geo)) {
                     Spacer()
                     

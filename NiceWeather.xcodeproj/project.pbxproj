@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4515A412252CF4FA00A8E51E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515A411252CF4FA00A8E51E /* Device.swift */; };
 		4526A92C252A60480081BD51 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526A92B252A60480081BD51 /* String+Ext.swift */; };
 		455E6FA5252B2C47000F0058 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E6FA4252B2C47000F0058 /* ShareButton.swift */; };
 		4582F19F252C6FE700A3F464 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4515A401252CDCC500A8E51E /* NiceWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NiceWeather.entitlements; sourceTree = "<group>"; };
+		4515A411252CF4FA00A8E51E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4526A92B252A60480081BD51 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		455E6FA4252B2C47000F0058 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 				45E59BF725277117006FD2C5 /* ShareWeather.swift */,
 				4582F1EB252CA5C500A3F464 /* NWError.swift */,
 				4582F1F0252CA60C00A3F464 /* Constants.swift */,
+				4515A411252CF4FA00A8E51E /* Device.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -197,6 +201,7 @@
 		45E59B9125274819006FD2C5 /* NiceWeather */ = {
 			isa = PBXGroup;
 			children = (
+				4515A401252CDCC500A8E51E /* NiceWeather.entitlements */,
 				45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */,
 				45E59B9425274819006FD2C5 /* ContentView.swift */,
 				4594FB632528BE8100C92639 /* Views */,
@@ -396,6 +401,7 @@
 				4526A92C252A60480081BD51 /* String+Ext.swift in Sources */,
 				455E6FA5252B2C47000F0058 /* ShareButton.swift in Sources */,
 				4582F1EC252CA5C500A3F464 /* NWError.swift in Sources */,
+				4515A412252CF4FA00A8E51E /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NiceWeather/NiceWeather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NiceWeather/Preview Content\"";
 				DEVELOPMENT_TEAM = GGXD5E6AF8;
@@ -565,6 +572,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -575,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NiceWeather/NiceWeather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NiceWeather/Preview Content\"";
 				DEVELOPMENT_TEAM = GGXD5E6AF8;
@@ -587,6 +597,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
