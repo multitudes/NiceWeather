@@ -12,12 +12,15 @@ enum UIHelper {
     static func createSpacing(geo: GeometryProxy) -> CGFloat {
         return geo.size.height/50 + geo.size.width/100
     }
+    
     static func createTitleSizeModifier(geo: GeometryProxy) -> CGFloat {
         return 33 + geo.size.height / 40
     }
+    
     static func createShareButtonFontAdjustment(geo: GeometryProxy) -> CGFloat {
         return 10 + geo.size.width * 0.03
     }
+    
     static func createShareButtonPaddingAdjustment(geo: GeometryProxy) -> CGPoint {
         return  CGPoint(x: geo.size.width - (25 + geo.size.width / 70), y: 25 + geo.size.width / 70)
     }
@@ -42,33 +45,29 @@ struct ContentView: View {
     var weatherDescription: String {
         model.currentWeather?.weather[0].description ?? ""
     }
+    
     var weatherCity: String {
         model.currentWeather?.name ?? ""
     }
+    
     var windSpeed: Double {
         model.currentWeather?.wind?.speed ?? 0.0
     }
+    
     var direction: Double {
         model.currentWeather?.wind?.deg ?? 0.0
     }
+    
     var temperature: Double {
         model.currentWeather?.main.temp ?? 0.0
     }
+    
     var tempMin: Double {
         model.currentWeather?.main.tempMin ?? 0.0
     }
+    
     var tempMax: Double {
         model.currentWeather?.main.tempMax ?? 0.0
-    }
-    #if os(iOS)
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    #endif
-    
-    var isiPhone: Bool {
-        Device.name.contains("iPhone")
-    }
-    var isiPad: Bool {
-        Device.name.contains("iPad")
     }
     
     var body: some View {
@@ -76,7 +75,7 @@ struct ContentView: View {
             ZStack{
                 BackgroundGradient(geo: geo)
                 
-                if isiPhone || isiPad {
+                if Device.isiPhone || Device.isiPad {
                     ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
                 } else {
                     EmptyView()
@@ -86,6 +85,10 @@ struct ContentView: View {
                     Spacer()
                     
                     CityTitle(city: weatherCity, geo: geo)
+                    
+                    if !Device.isiPhone {
+                        DateTime(datetime: datetime )
+                    }
                     
                     TemperatureView(temperature: temperature)
                     

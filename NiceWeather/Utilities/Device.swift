@@ -9,11 +9,18 @@ import UIKit
 
 struct Device {
     
-    static var name: String {
+    static var isiPhone: Bool {
         struct Singleton {
             static let deviceName = UIDevice.current.name
         }
-        return Singleton.deviceName
+        return Singleton.deviceName.contains("iPhone")
+    }
+    
+    static var isiPad: Bool {
+        struct Singleton {
+            static let deviceName = UIDevice.current.name
+        }
+        return Singleton.deviceName.contains("iPad")
     }
     
     static var osVersion: String {
