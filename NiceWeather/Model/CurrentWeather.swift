@@ -8,15 +8,15 @@
 import Foundation
 
 struct CurrentWeather: Codable {
-    var coord: Coordinates
+    //var coord: Coordinates
     var weather: [Weather]
-    var base: Base?
-    var main: MainWeatherData?
-    var visibility: Double?
+    //var base: Base?
+    var main: MainWeatherData
+    //var visibility: Double?
     var wind: Wind?
-    var clouds: Cloud?
+    //var clouds: Cloud?
     var dt: Date
-    var sys: Sys?
+    //var sys: Sys?
     var timezone: Int
     var id: Int
     var name: String

@@ -41,16 +41,16 @@ struct ContentView: View {
         model.currentWeather?.wind?.deg ?? 0.0
     }
     var temperature: Double {
-        model.currentWeather?.main?.temp ?? 0.0
+        model.currentWeather?.main.temp ?? 0.0
     }
     var tempMin: Double {
-        model.currentWeather?.main?.tempMin ?? 0.0
+        model.currentWeather?.main.tempMin ?? 0.0
     }
     var tempMax: Double {
-        model.currentWeather?.main?.tempMax ?? 0.0
+        model.currentWeather?.main.tempMax ?? 0.0
     }
     var humidity: Int {
-        (model.currentWeather?.main?.humidity ?? 0)
+        (model.currentWeather?.main.humidity ?? 0)
     }
     
     
@@ -87,10 +87,9 @@ struct ContentView: View {
                     Text("Humidity: \(humidity) %").font(.title2).bold()
                         .padding(5).opacity(0.8)
                     WindRose(windSpeed: windSpeed, direction: direction)
-                       // .padding(5)
+                       
                     
-                        HStack{
-                            
+                    
                             
                         Picker(selection: $citySelection, label: Text("dsf") ) {
                             ForEach(model.preferredLocations, id: \.self) {
@@ -104,8 +103,8 @@ struct ContentView: View {
                             model.updateLocation(with: value)
                             model.updateWeather()
                         })
-                            
-                        }.frame(width: geo.size.width, alignment: .center)
+                        Spacer()
+                      
                     
                     
                 }//.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )

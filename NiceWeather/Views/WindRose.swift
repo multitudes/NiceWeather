@@ -38,7 +38,7 @@ struct WindRose: View {
             } else {
                 Image(systemName: "line.3.crossed.swirl.circle.fill").font(.system(size: 33, weight: .heavy))
             }
-        }
+        }.padding(.bottom, -10)
     }
 }
 

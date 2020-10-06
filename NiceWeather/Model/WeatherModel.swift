@@ -7,7 +7,20 @@
 
 import SwiftUI
 
-// MARK: -
+// MARK: - Extension with static variables
+
+extension WeatherModel {
+    static let locationsKey = "Locations"
+    static let lastLocationKey = "Lastlocation"
+    static let defaultLastLocation = Location(city: "Berlin", countryCode: "DE")
+    static let defaultLocations = [
+        Location(city: "Berlin", countryCode: "DE"),
+        Location(city: "Tokyo", countryCode: "JP"),
+        Location(city: "Paris", countryCode: "FR"),
+    ]
+}
+
+// MARK: - Main Class
 
 class WeatherModel: ObservableObject {
     
@@ -29,15 +42,6 @@ class WeatherModel: ObservableObject {
     
     @Published var isDayTime: Bool = true
     
-    static let locationsKey = "Locations"
-    static let lastLocationKey = "Lastlocation"
-    static let defaultLastLocation = Location(city: "Berlin", countryCode: "DE")
-    static let defaultLocations = [
-        Location(city: "Berlin", countryCode: "DE"),
-        Location(city: "Tokyo", countryCode: "JP"),
-        Location(city: "Paris", countryCode: "FR"),
-    ]
-    
     init() {
         updateWeather()
     }
@@ -53,7 +57,7 @@ class WeatherModel: ObservableObject {
                     self.updateImage(icon: icon)
                     // I found out that the images returned at night time at the location have a format ending with n and are better suitable for displaying in dark mode
                     if icon[2] == "n" {
-                        print("?")
+                        print("NightMode!")
                         self.isDayTime = false
                     } else {
                         self.isDayTime = true
@@ -62,6 +66,15 @@ class WeatherModel: ObservableObject {
                     print(error)
             }
         }
+    }
+    
+    static func loadLastLocation() -> Location {
+        let savedLastLocation = UserDefaults.standard.object(forKey: WeatherModel.lastLocationKey)
+        if let lastLocation = savedLastLocation as? Data {
+            let decoder = JSONDecoder()
+            return (try? decoder.decode(Location.self, from: lastLocation)) ?? WeatherModel.defaultLastLocation
+        }
+        return WeatherModel.defaultLastLocation
     }
     
     func updateImage(icon: String){
@@ -82,15 +95,15 @@ class WeatherModel: ObservableObject {
         return WeatherModel.defaultLocations
     }
     
-    static func loadLastLocation() -> Location {
-        let savedLastLocation = UserDefaults.standard.object(forKey: WeatherModel.lastLocationKey)
-        if let lastLocation = savedLastLocation as? Data {
-            let decoder = JSONDecoder()
-            return (try? decoder.decode(Location.self, from: lastLocation)) ?? WeatherModel.defaultLastLocation
+    func persistLastLocation() {
+        print("persistLastLocation")
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(currentLocation) {
+            UserDefaults.standard.set(encoded, forKey: WeatherModel.lastLocationKey)
         }
-        return WeatherModel.defaultLastLocation
     }
     
+    // TODO: - editing locations not yet implemented in app
     func updateLocation(with location: Location){
         print(location)
         self.currentLocation = location
@@ -103,14 +116,6 @@ class WeatherModel: ObservableObject {
         }
     }
     
-    func persistLastLocation() {
-        print("persistLastLocation")
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(currentLocation) {
-            UserDefaults.standard.set(encoded, forKey: WeatherModel.lastLocationKey)
-        }
-    }
-    
     func addlocation(city: String, country: String) {
         let newLocation = Location(city: city, countryCode: country)
         preferredLocations.append(newLocation)
@@ -120,7 +125,5 @@ class WeatherModel: ObservableObject {
         preferredLocations.remove(atOffsets: offsets)
     }
 }
-
-
 
 
