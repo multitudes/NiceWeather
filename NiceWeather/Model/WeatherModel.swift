@@ -24,7 +24,7 @@ extension WeatherModel {
 
 class WeatherModel: ObservableObject {
     
-    @Published  var currentWeather: CurrentWeather?
+    @Published private(set) var currentWeather: CurrentWeather?
     
     @Published var preferredLocations = loadLocations() {
         didSet {
@@ -55,7 +55,7 @@ class WeatherModel: ObservableObject {
                     self.currentWeather = response
                     let icon = response.weather[0].icon
                     self.updateImage(icon: icon)
-                    // I found out that the images returned at night time at the location have a format ending with n and are better suitable for displaying in dark mode
+                    // I found out that the images returned at night time at the location have a format ending with n like '04n'and are better suitable for displaying in dark mode.
                     if icon[2] == "n" {
                         print("NightMode!")
                         self.isDayTime = false

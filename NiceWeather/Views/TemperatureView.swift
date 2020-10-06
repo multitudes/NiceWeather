@@ -18,8 +18,3 @@ struct TemperatureView: View {
     }
 }
 
-//struct TemperatureView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TemperatureView()
-//    }
-//}

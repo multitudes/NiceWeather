@@ -13,12 +13,11 @@ enum Constant {
 
 struct ContentView: View {
     
-    @StateObject var model: WeatherModel = WeatherModel()
+    @StateObject private var model: WeatherModel = WeatherModel()
     
-    @State var timer: Timer?
+    @State private var timer: Timer?
     @State private var isSharedPresented: Bool = false
-    //@Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State var citySelection: Location = WeatherModel.loadLastLocation()
+    @State private var citySelection: Location = WeatherModel.loadLastLocation()
     
     var datetime: String {
         let date = model.currentWeather?.dt ?? Date()
@@ -49,65 +48,39 @@ struct ContentView: View {
     var tempMax: Double {
         model.currentWeather?.main.tempMax ?? 0.0
     }
-    var humidity: Int {
-        (model.currentWeather?.main.humidity ?? 0)
-    }
+
     
     
     var body: some View {
         GeometryReader { geo in
             ZStack{
                 BackgroundGradient(geo: geo)
+                
                 ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
-                    
+                
+                // Small hack here on the Vstack spacing to adapt better on large devices like iPad:
                 VStack(spacing: geo.size.height/50
-                + geo.size.width/100
+                        + geo.size.width/100
                 ) {
+                    Spacer()
+                    
                     CityTitle(city: weatherCity, geo: geo)
-                  
+                    
                     TemperatureView(temperature: temperature)
                     
-                    ZStack{
-                        Circle().frame(width: 80, height: 80, alignment: .center).foregroundColor(.blue).opacity(0.4)
-                        Image(uiImage: model.image ?? UIImage(named: "weather")!)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                    }
-                    Text("\(weatherDescription)".capitalized).font(.body).bold()
-                        .padding(.bottom).opacity(0.5)
-
-                    HStack {
-                        Text("\(tempMax, specifier: "%.f")°").font(.title2).bold()
-                        Text("\(tempMin, specifier: "%.f")°").font(.title2).opacity(0.8)
-                    }
-                    Text("Humidity: \(humidity) %").font(.title2).bold()
-                        .padding(5).opacity(0.8)
+                    WeatherDescriptionView(image: model.image, weatherDescription: weatherDescription)
+                    
+                    TempMaxMin(tempMin: tempMin , tempMax: tempMax)
+                    
+                    HumidityView(model: model)
+                    
                     WindRose(windSpeed: windSpeed, direction: direction)
-                       
                     
+                    CityPicker(citySelection: $citySelection, model: model)
                     
-                            
-                        Picker(selection: $citySelection, label: Text("dsf") ) {
-                            ForEach(model.preferredLocations, id: \.self) {
-                                Text($0.city).font(.system(.title2))
-                            }
-                        }
-                        .pickerStyle(WheelPickerStyle())
-                        .frame(width: 150, height: 50, alignment: .center).padding()
-                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        .onChange(of: citySelection, perform: { value in
-                            model.updateLocation(with: value)
-                            model.updateWeather()
-                        })
-                        Spacer()
-                      
+                    Spacer()
                     
-                    
-                }//.position(x: geo.size.width / 2, y: geo.size.height * 4 / 9  )
-                
-                
-                
+                }
             }
             .sheet(isPresented: $isSharedPresented) {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(datetime): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
@@ -115,14 +88,14 @@ struct ContentView: View {
             }
             .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
-                                                    model.updateWeather()})
+                    model.updateWeather()
+                })
             }
             .onDisappear() {
                 timer?.invalidate()
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
         }
-        
     }
 }
 
