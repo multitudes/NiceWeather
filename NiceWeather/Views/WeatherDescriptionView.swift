@@ -21,7 +21,7 @@ struct WeatherDescriptionView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
-            }
+            }.accessibility(label: Text("current weather icon"))
             Text("\(weatherDescription)".capitalized).font(.body).bold()
                 .padding(.bottom).opacity(0.5)
         }

@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct WindRose: View {
+    @State private var isAnimating = false
     
     var windSpeed: Double
     var direction: Double
-    @State private var isAnimating = false
+    var degrees: Double {
+        return -45 + direction - 180
+    }
     
     var windRoseAnimation: Animation {
         if isAnimating {
             return Animation.linear(duration: 8/windSpeed)
                 .repeatForever(autoreverses: false)
         } else {
-            return Animation.default
+            return Animation.linear(duration: 8/windSpeed)
         }
     }
     
@@ -29,7 +32,8 @@ struct WindRose: View {
                 Text("Wind speed: \(windSpeed, specifier: "%.1f") m/s ")
                     .bold()
                 SFSymbols.windDirection
-                    .rotationEffect(Angle(degrees: -45 + direction - 180))
+                    .rotationEffect(Angle(degrees: degrees))
+                    .accessibility(label: Text("wind direction"))
             }
             .font(Font.title2.monospacedDigit())
             .padding(5)

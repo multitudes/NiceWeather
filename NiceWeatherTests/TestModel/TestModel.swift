@@ -46,9 +46,16 @@ class TestModel: XCTestCase {
     }
     
     func testcurrentLocationPersistence() {
-        sut?.currentLocation = Location(city: "San Francisco", countryCode: "US")
+        sut?.currentLocation = Location(city: "Paris", countryCode: "US")
         sut?.persistLastLocation()
         XCTAssert(WeatherModel.loadLastLocation() == sut?.currentLocation , "location does not persist")
+    }
+
+    func testPerformanceloadLocations() throws {
+        // This is an example of a performance test case.
+        self.measure {
+            _ = WeatherModel.loadLocations()
+        }
     }
     
     override func setUpWithError() throws {
@@ -64,11 +71,6 @@ class TestModel: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+
 
 }
