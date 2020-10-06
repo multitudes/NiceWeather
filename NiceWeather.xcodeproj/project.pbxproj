@@ -18,6 +18,7 @@
 		4582F1DB252C9B8000A3F464 /* CityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F1DA252C9B8000A3F464 /* CityPicker.swift */; };
 		4582F1EC252CA5C500A3F464 /* NWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F1EB252CA5C500A3F464 /* NWError.swift */; };
 		4582F1F1252CA60C00A3F464 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F1F0252CA60C00A3F464 /* Constants.swift */; };
+		4582F208252CBE9300A3F464 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F207252CBE9300A3F464 /* TestModel.swift */; };
 		4594FB15252881ED00C92639 /* WindRose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594FB14252881ED00C92639 /* WindRose.swift */; };
 		4594FB2925289E9A00C92639 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594FB2825289E9A00C92639 /* NetworkManager.swift */; };
 		45E59B9325274819006FD2C5 /* NiceWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */; };
@@ -61,6 +62,7 @@
 		4582F1DA252C9B8000A3F464 /* CityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPicker.swift; sourceTree = "<group>"; };
 		4582F1EB252CA5C500A3F464 /* NWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWError.swift; sourceTree = "<group>"; };
 		4582F1F0252CA60C00A3F464 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4582F207252CBE9300A3F464 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		4594FB14252881ED00C92639 /* WindRose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindRose.swift; sourceTree = "<group>"; };
 		4594FB2825289E9A00C92639 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		45E59B8F25274819006FD2C5 /* NiceWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,21 @@
 				4526A92B252A60480081BD51 /* String+Ext.swift */,
 			);
 			path = Extensioons;
+			sourceTree = "<group>";
+		};
+		4582F205252CBE4D00A3F464 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4582F206252CBE5500A3F464 /* TestModel */ = {
+			isa = PBXGroup;
+			children = (
+				4582F207252CBE9300A3F464 /* TestModel.swift */,
+			);
+			path = TestModel;
 			sourceTree = "<group>";
 		};
 		4594FB5F2528BE6100C92639 /* Utilities */ = {
@@ -188,6 +205,8 @@
 		45E59BA32527481A006FD2C5 /* NiceWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				4582F206252CBE5500A3F464 /* TestModel */,
+				4582F205252CBE4D00A3F464 /* Data */,
 				45E59BA42527481A006FD2C5 /* NiceWeatherTests.swift */,
 				45E59BA62527481A006FD2C5 /* Info.plist */,
 			);
@@ -369,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E59BA52527481A006FD2C5 /* NiceWeatherTests.swift in Sources */,
+				4582F208252CBE9300A3F464 /* TestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
