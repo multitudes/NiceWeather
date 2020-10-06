@@ -61,6 +61,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack{
+                BackgroundGradient(size: geo)
                 ShareButton(isSharedPresented: $isSharedPresented)
                     .position(x: geo.size.width - 40, y:  40)
                     .accentColor(.purple)
