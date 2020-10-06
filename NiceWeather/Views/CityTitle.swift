@@ -15,7 +15,9 @@ struct CityTitle: View {
             .font(.custom("SF-Pro-Text-Medium", size: 33 + geo.size.height / 40)).bold()
           //  .position(x: geo.size.width / 2 , y: geo.size.height / 8)
             .minimumScaleFactor(0.5)
-            .frame(maxHeight:100)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth:400 ,maxHeight:100)
+            .padding(.horizontal, 70)
             
 
     }

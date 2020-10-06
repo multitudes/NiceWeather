@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum Constant {
+    //static let Vspacing =
+}
+
 struct ContentView: View {
     
     @StateObject var model: WeatherModel = WeatherModel()
@@ -16,19 +20,11 @@ struct ContentView: View {
     //@Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var citySelection: Location = WeatherModel.loadLastLocation()
     
-    var date: String {
+    var datetime: String {
         let date = model.currentWeather?.dt ?? Date()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
-        formatter.dateFormat = "EEEE, MMMM dd, yyyy"
-        return formatter.string(from: date)
-    }
-    
-    var time: String {
-        let date = model.currentWeather?.dt ?? Date()
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
-        formatter.dateFormat = "h:mm a"
+        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
         return formatter.string(from: date)
     }
     
@@ -68,7 +64,7 @@ struct ContentView: View {
                 + geo.size.width/100
                 ) {
                     CityTitle(city: weatherCity, geo: geo)
-                   // DateTime(date: date, time: time, geo: geo)
+                   DateTime(datetime: datetime, geo: geo)
 
                     HStack {
                         Image(systemName: "thermometer").font(.largeTitle)
@@ -118,7 +114,7 @@ struct ContentView: View {
                 
             }
             .sheet(isPresented: $isSharedPresented) {
-                ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(date) \(time): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
+                ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(datetime): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
                     .environment(\.colorScheme, model.isDayTime ? .light : .dark )
             }
             .onAppear() {
