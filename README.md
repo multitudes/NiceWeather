@@ -153,6 +153,7 @@ struct NiceWeatherApp: App {
 
 ### The NetworkManager
 I create a separate `NetworkManager` class which will take care of my network calls. In this class I will call its method `getWeather(for city:country:)` from my viewmodel to get the current weather data and pass it to the view.
+In the same class I have a function to download the image icons provided and I implemented a cache, so we do not need to download the image twice. The images have a very small size in any case, and this will not cause any storage problems.
 
 ### ATS - Apple Transport Security
 I got the error message:
@@ -184,6 +185,11 @@ Where needed I added labels to buttons that would be difficult for Voiceover to 
 ### Layout for bigger screens
 The layout would not change for my app but I tweaked the sizes of the button and the title to make it bigger. I think it looks good but can be improved further.
 
+### To do
+
+Still to do:
+- display an alert when user runs out of API calls in the free subscription model.
+- display when problems loading the data of with the internet connection
 
 
 
