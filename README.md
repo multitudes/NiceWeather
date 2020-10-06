@@ -18,7 +18,8 @@ Build a small app which displays a weather forecast for Berlin using http://open
 
 ## The execution
 
-The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.  
+The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.
+It will work on iPhone iPad and even on macOS (the share button is UIKit only and will not work).
 
 <br>
 <p align="center">
@@ -109,18 +110,33 @@ struct CurrentWeather: Codable {
 ### The viewmodel
 
 The viewmodel will use the model to convert the API call to data for our views. It will be a class conforming to the `ObservableObject` protocol and use a property wrapper `@Published` to pass the data to our views. When a published property changes, SwiftUI will refresh our views automatically. This class will be our source of truth!
-Also the app will remember the last selected city or preferred city.
 
 ```swift
 class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?
-    @Published var currentCity: City?
+    
+    @Published var currentLocation: Location = loadLastLocation() {
+        didSet {
+            persistLastLocation()
+        }
+    }
     
     [...]
 ```
+Also the app will remember the last selected city or preferred city. which will be stored in the UserDefaults:
 
-In SwiftUI we do not have the files AppDelagate.swift and Scene.swift anymore, our data will be initialized in the `NiceWeatherApp.swift` file as an `environmentObject`.
+```swift
+    static func loadLastLocation() -> Location {
+        let savedLastLocation = UserDefaults.standard.object(forKey: WeatherModel.lastLocationKey)
+        if let lastLocation = savedLastLocation as? Data {
+            let decoder = JSONDecoder()
+            return (try? decoder.decode(Location.self, from: lastLocation)) ?? WeatherModel.defaultLastLocation
+        }
+        return WeatherModel.defaultLastLocation
+    }
+```
+In SwiftUI we do not have the files AppDelagate.swift and Scene.swift anymore.
 
 ```swift
 import SwiftUI
@@ -130,7 +146,6 @@ struct NiceWeatherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(WeatherModel())
         }
     }
 }
@@ -153,11 +168,9 @@ Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `
 ```
 
 ### My Data
-I get in the console the converted json data. 
-Time to do the layout in my views. 
-I will add a picker with a list of cities to chose from. This can be customized later to add more cities, or the user can add cities  to the app.
+I display in the console the converted json data and lay the values in the view passing an instance of my model.
+I will add a picker with a list of cities to chose from. This can be customized later to add more cities, or the user can add cities to the app.
 For the wind animation I will use an icon in SF Symbols which will rotate with a speed depending of the intensity of the wind.
-
 
 ### Accessibility
 Where needed I added labels to buttons that would be difficult for Voiceover to spell like in the sharing button:
@@ -167,6 +180,13 @@ Where needed I added labels to buttons that would be difficult for Voiceover to 
                                     .accessibility(label: Text("share"))
                 })
 ```
+
+### Layout for bigger screens
+The layout would not change for my app but I tweaked the sizes of the button and the title to make it bigger. I think it looks good but can be improved further.
+
+
+
+
 
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
