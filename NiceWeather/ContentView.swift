@@ -61,18 +61,15 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack{
-                BackgroundGradient(size: geo)
-                ShareButton(isSharedPresented: $isSharedPresented)
-                    .position(x: geo.size.width - 40, y:  40)
-                    .accentColor(.purple)
-                VStack {
-//                    Spacer(minLength: 20)
-                    Text("\(weatherCity)".capitalized).font(.title).bold()
+                BackgroundGradient(geo: geo)
+                ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
                     
-                    Text("\(date) \(time)")
-                        .multilineTextAlignment(.center)
-                        .font(.body).opacity(0.5)
-                        .padding(.bottom)
+                VStack(spacing: geo.size.height/50
+                + geo.size.width/100
+                ) {
+                    CityTitle(city: weatherCity, geo: geo)
+                   // DateTime(date: date, time: time, geo: geo)
+
                     HStack {
                         Image(systemName: "thermometer").font(.largeTitle)
                         Text("\(temperature, specifier: "%.f")°").font(.largeTitle)

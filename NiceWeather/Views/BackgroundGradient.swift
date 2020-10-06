@@ -12,12 +12,12 @@ struct BackgroundColor {
 }
 
 struct BackgroundGradient: View {
-    let size: GeometryProxy
+    let geo: GeometryProxy
     
     var body: some View {
         AngularGradient(gradient: BackgroundColor.gradient, center: .center)
             .scaleEffect(4)
-            .offset(x: -500.0, y: -40.0)
+            .offset(x:  -geo.size.width * 0.75, y: -40.0)
             .opacity(0.2)
             .ignoresSafeArea()
     }
