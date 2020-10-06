@@ -67,9 +67,9 @@ struct ContentView: View {
         GeometryReader { geo in
             ZStack{
                 BackgroundGradient(geo: geo)
-                
+                #if os(iOS)
                 ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
-                
+                #endif
                 VStack(spacing: UIHelper.createSpacing(geo: geo)) {
                     Spacer()
                     

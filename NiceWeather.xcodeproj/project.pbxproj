@@ -139,6 +139,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4582F216252CDA3300A3F464 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				45E59B962527481A006FD2C5 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		4594FB5F2528BE6100C92639 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,10 +199,10 @@
 			children = (
 				45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */,
 				45E59B9425274819006FD2C5 /* ContentView.swift */,
-				4582F215252CD9ED00A3F464 /* ViewModel */,
 				4594FB632528BE8100C92639 /* Views */,
+				4582F215252CD9ED00A3F464 /* ViewModel */,
 				45E59BC025274884006FD2C5 /* Model */,
-				45E59B962527481A006FD2C5 /* Assets.xcassets */,
+				4582F216252CDA3300A3F464 /* Support */,
 				45E59B9B2527481A006FD2C5 /* Info.plist */,
 				4582F1B6252C7BEA00A3F464 /* Extensioons */,
 				4594FB5F2528BE6100C92639 /* Utilities */,
