@@ -64,12 +64,9 @@ struct ContentView: View {
                 + geo.size.width/100
                 ) {
                     CityTitle(city: weatherCity, geo: geo)
-                   DateTime(datetime: datetime, geo: geo)
-
-                    HStack {
-                        Image(systemName: "thermometer").font(.largeTitle)
-                        Text("\(temperature, specifier: "%.f")°").font(.largeTitle)
-                    }
+                  
+                    TemperatureView(temperature: temperature)
+                    
                     ZStack{
                         Circle().frame(width: 80, height: 80, alignment: .center).foregroundColor(.blue).opacity(0.4)
                         Image(uiImage: model.image ?? UIImage(named: "weather")!)

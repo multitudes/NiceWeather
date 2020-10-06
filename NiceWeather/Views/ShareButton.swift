@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct ShareButton: View {
+    
     @Binding var isSharedPresented: Bool
+    
     var geo: GeometryProxy
+    
     var adjustment: CGFloat {
         25 + geo.size.width / 70
     }
+    var fontAdjustment: CGFloat {
+        10 + geo.size.width * 0.03
+    }
+    
     var body: some View {
         
         Button(action: {
             self.isSharedPresented = true
         }) {
             Image(systemName: "square.and.arrow.up")
-                .font(Font.system(size: 10 + geo.size.width * 0.03))
+                .font(Font.system(size: fontAdjustment))
                 .accessibility(label: Text("share"))
             
         }
@@ -27,9 +34,3 @@ struct ShareButton: View {
         .accentColor(.purple)
     }
 }
-//
-//struct ShareButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ShareButton(isSharedPresented: .constant(false))
-//    }
-//}
