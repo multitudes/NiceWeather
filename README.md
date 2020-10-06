@@ -184,6 +184,12 @@ Where needed I added labels to buttons that would be difficult for Voiceover to 
 ### Layout for bigger screens
 The layout would not change for my app but I tweaked the sizes of the button and the title to make it bigger. I think it looks good but can be improved further.
 
+### To do
+
+Still to do:
+- impplementing a cache for the images
+- display an alert when user runs out of API calls in the free subscription model.
+- display when problems loading the data of with the internet connection
 
 
 
