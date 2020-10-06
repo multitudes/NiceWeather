@@ -11,8 +11,8 @@ class NetworkManager {
     static let shared   = NetworkManager()
     
     // example of my API call
-    //http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&APPID=385417c76d45ab1972316b6ffd8b6efa
     //http://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&units=metric&APPID=385417c76d45ab1972316b6ffd8b6efa
+    
     private let baseURL = "http://api.openweathermap.org/data/2.5/weather?q="
     private let myAPI = "385417c76d45ab1972316b6ffd8b6efa"
     let cache           = NSCache<NSString, UIImage>()
@@ -67,6 +67,7 @@ class NetworkManager {
         
         if let image = cache.object(forKey: cacheKey) {
             completed(image)
+            print("cache hit!")
             return
         }
         
