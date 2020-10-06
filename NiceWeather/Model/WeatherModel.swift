@@ -26,18 +26,18 @@ class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?
     
-    @Published var preferredLocations = loadLocations() {
-        didSet {
-            persistLocations()
-        }
-    }
-    
     @Published var currentLocation: Location = loadLastLocation() {
         didSet {
             persistLastLocation()
         }
     }
-    
+
+    @Published var preferredLocations = loadLocations() {
+        didSet {
+            persistLocations()
+        }
+    }
+ 
     @Published var image: UIImage? = nil
     
     @Published var isDayTime: Bool = true
