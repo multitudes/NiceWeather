@@ -13,7 +13,7 @@ struct CurrentWeather: Codable {
         let date = dt
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: timezone)
-        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
+        formatter.dateFormat = "EEEE, MMMM dd, h:mm a"
         return formatter.string(from: date)
     }
 

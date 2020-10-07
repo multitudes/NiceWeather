@@ -26,7 +26,6 @@ class NiceWeatherTests: XCTestCase {
         let weatherData = try decoder.decode(CurrentWeather.self, from: data)
         currentWeather = weatherData
         viewModel.currentLocation = Location(city: "Berlin", countryCode: "De")
-        
     }
 
     override func tearDownWithError() throws {
@@ -75,23 +74,64 @@ class NiceWeatherTests: XCTestCase {
         XCTAssertEqual(currentWeather?.main.tempMax, 13.89)
     }
     
+    func testisDayTime() {
+        XCTAssertEqual(viewModel?.isDayTime, true)
+    }
     
-//    func testTitle() {
-//        cv = ContentView()
-//       // let body = cv?.
-//    }
-
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testIcon() {
+        XCTAssertEqual(currentWeather?.weather[0].icon, "03d")
+    }
+    
+    func testDefaultLocations() {
+        let defaultLocations = WeatherModel.defaultLocations
+        XCTAssertNotNil(defaultLocations.count)
+    }
+    
+    func testDefaultLastLocations() {
+        let defaultLastLocation = WeatherModel.defaultLastLocation
+        XCTAssertNotNil(defaultLastLocation)
+    }
+    
+    func testUserDefaultKeys() {
+        XCTAssert(WeatherModel.locationsKey == "Locations", "locationsKey is wrong")
+        XCTAssert(WeatherModel.lastLocationKey == "Lastlocation", "lastLocationKey is wrong")
+    }
+    
+    func testloadLastLocationNotNil() {
+        XCTAssertNotNil(WeatherModel.loadLastLocation(), "loadLastLocation() gives a nil value")
     }
 
-    func testPerformanceExample() throws {
+    func testloadLocations() {
+        XCTAssert(WeatherModel.loadLocations().count > 0, "loadLocations() gives an empty array")
+    }
+    
+    func testcurrentLocationPersistence() {
+        let lastLocation = WeatherModel.loadLastLocation()
+        viewModel?.currentLocation = Location(city: "Paris", countryCode: "US")
+        viewModel?.persistLastLocation()
+        XCTAssert(WeatherModel.loadLastLocation() == viewModel?.currentLocation , "location does not persist")
+        // restoring previous state
+        viewModel?.currentLocation = lastLocation
+    }
+
+    func testPerformanceloadLocations() throws {
         // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
+            _ = WeatherModel.loadLocations()
         }
     }
+
+
+//    func testExample() throws {
+//        // This is an example of a functional test case.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    }
+//
+//    func testPerformanceExample() throws {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }

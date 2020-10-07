@@ -11,15 +11,17 @@ import XCTest
 class NiceWeatherSlowTests: XCTestCase {
     
     var sut: URLSession!
+    var viewModel: WeatherModel!
     
     override func setUp() {
-      super.setUp()
-      sut = URLSession(configuration: .default)
+        super.setUp()
+        sut = URLSession(configuration: .default)
+        viewModel = WeatherModel()
     }
-
+    
     override func tearDown() {
-      sut = nil
-      super.tearDown()
+        sut = nil
+        super.tearDown()
     }
     
     func testValidCallToAPIGetsHTTPStatusCode200(){
@@ -38,11 +40,25 @@ class NiceWeatherSlowTests: XCTestCase {
         XCTAssertEqual(statusCode, 200)
     }
     
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
+    func testImageDownload() {
+        let lastImage = viewModel.image
+        var downloadedImage: UIImage?
+        let asyncDone = expectation(description: "Async function")
+        
+        NetworkManager.shared.downloadImage(from: "03d") {
+            image in
+            DispatchQueue.main.async {
+                downloadedImage = image }
+            asyncDone.fulfill()
+        }
+        wait(for: [asyncDone], timeout: 4)
+        /* Test the results here */
+        
+        XCTAssertNotNil(downloadedImage)
+        XCTAssertEqual(downloadedImage!.size.width, 100.0)
+        XCTAssertEqual(downloadedImage!.size.height, 100.0)
+        
+        // restore state
+        viewModel.image = lastImage
+    }
 }

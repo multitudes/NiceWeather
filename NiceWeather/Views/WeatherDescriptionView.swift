@@ -17,7 +17,7 @@ struct WeatherDescriptionView: View {
                     .frame(width: 80, height: 80, alignment: .center)
                     .foregroundColor(.blue)
                     .opacity(0.4)
-                Image(uiImage: image ?? Placeholders.WeatherImage)
+                Image(uiImage: image!)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)

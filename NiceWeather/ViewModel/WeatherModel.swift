@@ -38,7 +38,7 @@ class WeatherModel: ObservableObject {
         }
     }
  
-    @Published var image: UIImage? = nil
+    @Published var image: UIImage = Placeholders.WeatherImage
     
     @Published var isDayTime: Bool = true
     
@@ -81,7 +81,7 @@ class WeatherModel: ObservableObject {
         print("icon \(icon)")
         NetworkManager.shared.downloadImage(from: icon) { [weak self] image in
             guard let self = self else { return }
-            DispatchQueue.main.async { self.image = image }
+            DispatchQueue.main.async { self.image = image ?? Placeholders.WeatherImage }
         }
     }
     
