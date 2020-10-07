@@ -32,6 +32,10 @@ class NiceWeatherTests: XCTestCase {
     override func tearDownWithError() throws {
         // bring back orig state
         viewModel.currentLocation = lastLocation
+        viewModel = nil
+        currentWeather = nil
+        lastLocation = nil
+        contentView = nil
     }
 
     func testContentView() {
@@ -40,9 +44,38 @@ class NiceWeatherTests: XCTestCase {
     }
     
     func testDateTime() {
-        //let 
-       // XCTAssertEqual(viewModel.date, "Mon, June 22")
+        XCTAssertEqual(currentWeather?.datetime, "Wednesday, October 07, 2020 9:27 AM")
     }
+    
+    func testWeatherDescription() {
+        XCTAssertEqual(currentWeather?.weather[0].description, "scattered clouds")
+    }
+
+    func testWeatherCity() {
+        XCTAssertEqual(currentWeather?.name, "Berlin")
+    }
+    
+    func testWindSpeed() {
+        XCTAssertEqual(currentWeather?.wind?.speed, 2.6)
+    }
+       
+    func testWindDirection() {
+        XCTAssertEqual(currentWeather?.wind?.deg, 210)
+    }
+    
+    func testWindTemperature() {
+        XCTAssertEqual(currentWeather?.main.temp, 12.35)
+    }
+    
+    func testWindTempMin() {
+        XCTAssertEqual(currentWeather?.main.tempMin, 11)
+    }
+    
+    func testWindTempMax() {
+        XCTAssertEqual(currentWeather?.main.tempMax, 13.89)
+    }
+    
+    
 //    func testTitle() {
 //        cv = ContentView()
 //       // let body = cv?.

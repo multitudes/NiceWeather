@@ -33,14 +33,7 @@ struct ContentView: View {
     @State private var timer: Timer?
     @State private var isSharedPresented: Bool = false
     @State private var citySelection: Location = WeatherModel.loadLastLocation()
-    
-//    var datetime: String {
-//        let date = model.currentWeather?.dt ?? Date()
-//        let formatter = DateFormatter()
-//        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
-//        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
-//        return formatter.string(from: date)
-//    }
+
     var datetime: String {
         model.currentWeather?.datetime ?? ""
     }
@@ -89,9 +82,7 @@ struct ContentView: View {
                     
                     CityTitle(city: weatherCity, geo: geo)
                     
-                    if !Device.isiPhone {
-                        DateTime(datetime: datetime )
-                    }
+                    DateTime(datetime: datetime )
                     
                     TemperatureView(temperature: temperature)
                     
