@@ -102,13 +102,11 @@ From the API response, I built the model as a struct conforming to the Codable p
 struct CurrentWeather: Codable {
     var coord: Coordinates
     var weather: [Weather]
-    var base: Base?
-    var main: MainWeatherData?
-    var visibility: Double?
-    var wind: Wind?
-    var clouds: Cloud?
+    var main: MainWeatherData
+    var visibility: Double
+    var wind: Wind
+    var clouds: Cloud
     var dt: Date
-    var sys: Sys?
     var timezone: Int
     var id: Int
     var name: String
@@ -152,7 +150,7 @@ Also the app will remember the last selected city or preferred city. which will 
         return WeatherModel.defaultLastLocation
     }
 ```
-In SwiftUI we do not have the files AppDelagate.swift and Scene.swift anymore.
+In SwiftUI we do not have the files AppDelagate.swift and Scene.swift anymore. Instead we have the main struct:
 
 ```swift
 import SwiftUI
@@ -172,10 +170,11 @@ I create a separate `NetworkManager` class which will take care of my network ca
 In the same class, I have a function to download the image icons provided and I implemented a cache, so we do not need to download the image twice. The images have a very small size in any case, and this will not cause any storage problems.
 
 ### ATS - Apple Transport Security
-I got the error message:
+Clearly Apple doesnt like URL's starting with `HTTP`. I got the error message:
 >2020-10-02 14:42:14.713320+0200 NiceWeather[98370:5805877] App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
 
-Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `.plist` file:
+I only need to add this to my `.plist` file:
+
 ```
     <key>NSAppTransportSecurity</key>
     <dict>
@@ -187,7 +186,7 @@ Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `
 ### My Data
 I display in the console the converted JSON data and lay the values in the view passing an instance of my model.
 I will add a picker with a list of cities to choose from. This can be customized later to add more cities, or the user can add cities to the app.
-For the wind animation, I will use an icon in SF Symbols which will rotate with a speed depending on the intensity of the wind.
+For the wind animation, I will use an icon in SF Symbols which will rotate with a speed depending on the intensity of the wind. The wind direction will be indicated by a `paperplane` icon.
 
 ### Accessibility
 Where needed I added labels to buttons that would be difficult for Voiceover to spell like in the sharing button:
@@ -208,9 +207,6 @@ I added some Unit and UITests but are by no mean exhaustive and can be improved 
 
 Still to do:
 - display an alert when the user runs out of API calls in the free subscription model.
-
-
-
 
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
