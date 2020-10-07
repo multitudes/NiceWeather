@@ -17,10 +17,6 @@ class NiceWeatherUITests: XCTestCase {
         app.launch()
     }
     
-    func testDisplayingShareButton() {
-        XCTAssertTrue(app.buttons["share"].exists)
-    }
-    
     func testDisplayingImages() {
         XCTAssert(app.images.count == 5, "Missing images" )
         XCTAssertTrue(app.images["thermometer"].exists)
@@ -31,12 +27,8 @@ class NiceWeatherUITests: XCTestCase {
     }
     
     #if os(iOS)
-    func testShareButton() {
-        self.app = XCUIApplication()
-        app.launch()
-        let app = XCUIApplication()
-        app.buttons["share"].tap()
-        app.navigationBars["UIActivityContentView"].buttons["Close"].tap()
+    func testDisplayingShareButton() {
+        XCTAssertTrue(app.buttons["share"].exists)
     }
     #endif
 

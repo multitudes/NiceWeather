@@ -24,7 +24,7 @@ class NiceWeatherSlowTests: XCTestCase {
         super.tearDown()
     }
     
-    func testValidCallToAPIGetsHTTPStatusCode200(){
+    func testValidCallToAPIAndStatusCode200(){
         let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&units=metric&APPID=385417c76d45ab1972316b6ffd8b6efa")
         let promise = expectation(description: "Completion handler invoked")
         var statusCode: Int?
