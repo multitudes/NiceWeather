@@ -29,15 +29,17 @@ iPhone:
 <img src="ReadMe-Images/niceweather.gif" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
-iPad:
+iPad:  
+
 <br>
 <p align="center">
   <img src="ReadMe-Images/iPad-niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/iPad-niceweather1.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="ReadMe-Images/iPad-niceweather2.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/iPad-niceweather3.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
-And tentatively a macOS version with Catalist. It works, but the animation doesnt like when the frame gets resized.
+And tentatively a macOS version with Catalist. It works, but the animation doesnt like when the frame gets resized.  
+
 <br>
 <p align="center">
   <img src="ReadMe-Images/macNiceweather.png" width="700"  title="NiceWeather">
