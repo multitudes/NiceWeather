@@ -19,7 +19,8 @@ Build a small app which displays a weather forecast for Berlin using http://open
 ## The execution
 
 The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.
-It will work on iPhone iPad and even on macOS (the share button is UIKit only and will not work).
+It will work on iPhone iPad and even on macOS using Catalyst (the share button is UIKit only and will not work therefore I reemoved it for now).
+
 
 <br>
 <p align="center">
@@ -27,6 +28,22 @@ It will work on iPhone iPad and even on macOS (the share button is UIKit only an
 <img src="ReadMe-Images/niceweather1.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="ReadMe-Images/niceweather.gif" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
+<br></br>
+ 
+
+<br>
+<p align="center">
+  <img src="ReadMe-Images/iPad-niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/iPad-niceweather2.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/iPad-niceweather3.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<br></br>
+And tentatively a macOS version with Catalist. It works, but the animation doesnt like when the frame gets resized.  
+
+<br>
+<p align="center">
+  <img src="ReadMe-Images/macNiceweather.png" width="700"  title="NiceWeather">
+  </p>
 <br></br>
 
 ### The API
