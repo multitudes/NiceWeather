@@ -85,6 +85,9 @@ struct ContentView: View {
                 ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(datetime): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
                     .environment(\.colorScheme, model.isDayTime ? .light : .dark )
             }
+            .alert(isPresented: $model.loadingError) {
+                Alert(title: Text("The weather could not be loaded"), message: Text("Pls check your network connection"), dismissButton: .default(Text("OK")))
+            }
             .onAppear() {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats: true, block: { _ in
                     model.updateWeather()
@@ -95,9 +98,7 @@ struct ContentView: View {
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
         }
-        .alert(isPresented: $model.loadingError) {
-            Alert(title: Text("The weather could not be loaded"), message: Text("Pls check your network connection"), dismissButton: .default(Text("OK")))
-        }
+
     }
     
 }
