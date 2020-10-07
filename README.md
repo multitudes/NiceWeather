@@ -38,7 +38,7 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 <img src="ReadMe-Images/iPad-niceweather3.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
-And tentatively a macOS version with Catalist. It works, but the animation doesnt like when the frame gets resized.  
+ 
 
 <br>
 <p align="center">
@@ -200,13 +200,15 @@ Where needed I added labels to buttons that would be difficult for Voiceover to 
 ```
 
 ### Layout for bigger screens
-The layout would not change for my app but I tweaked the sizes of the button and the title to make it bigger. I think it looks good but can be improved further.
+The layout would not change for my app but I tweaked the sizes of the button and the title to make it bigger on the iPad. I think it looks good but can be improved further.
+
+### Unit tests
+I added some Unit and UITests but are by no mean exhaustive and can be improved further.
 
 ### To do
 
 Still to do:
 - display an alert when user runs out of API calls in the free subscription model.
-- display when problems loading the data of with the internet connection
 
 
 
