@@ -1,7 +1,7 @@
 
 <img src="icons/weather.svg" width="100"  title="app">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-# Nice Weather App (in progress)
+# Nice Weather App
 
 ### Weather App Challenge
 Build a small app which displays a weather forecast for Berlin using http://openweathermap.org/
@@ -33,9 +33,8 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 
 <br>
 <p align="center">
-  <img src="ReadMe-Images/iPad-niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/iPad-niceweather2.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/iPad-niceweather3.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="ReadMe-Images/iPad-niceweather.png" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/iPad-niceweather2.png" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
  
