@@ -43,7 +43,7 @@ class NiceWeatherTests: XCTestCase {
     }
     
     func testDateTime() {
-        XCTAssertEqual(currentWeather?.datetime, "Wednesday, October 07, 2020 9:27 AM")
+        XCTAssertEqual(currentWeather?.datetime, "Wednesday, October 07, 9:27 AM")
     }
     
     func testWeatherDescription() {

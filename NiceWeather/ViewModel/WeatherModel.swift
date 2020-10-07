@@ -31,16 +31,18 @@ class WeatherModel: ObservableObject {
             persistLastLocation()
         }
     }
-
+    
     @Published var preferredLocations = loadLocations() {
         didSet {
             persistLocations()
         }
     }
- 
+    
     @Published var image: UIImage = Placeholders.WeatherImage
     
     @Published var isDayTime: Bool = true
+    
+    @Published var loadingError: Bool = false
     
     init() {
         updateWeather()
@@ -56,14 +58,14 @@ class WeatherModel: ObservableObject {
                     let icon = response.weather[0].icon
                     self.updateImage(icon: icon)
                     // I found out that the images returned at night time at the location have a format ending with n like '04n'and are better suitable for displaying in dark mode.
-                    if icon[2] == "n" {
-                        print("NightMode!")
-                        self.isDayTime = false
-                    } else {
-                        self.isDayTime = true
+                    
+                    DispatchQueue.main.async {
+                        if icon[2] == "n" { self.isDayTime = false } else { self.isDayTime = true }
                     }
                 case .failure(let error):
                     print(error)
+                    DispatchQueue.main.async {
+                        self.loadingError = true }
             }
         }
     }

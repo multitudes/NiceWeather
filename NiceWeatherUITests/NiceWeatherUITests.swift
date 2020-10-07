@@ -30,6 +30,15 @@ class NiceWeatherUITests: XCTestCase {
         XCTAssertTrue(app.images["wind speed animation"].exists)
     }
     
+    #if os(iOS)
+    func testShareButton() {
+        self.app = XCUIApplication()
+        app.launch()
+        let app = XCUIApplication()
+        app.buttons["share"].tap()
+        app.navigationBars["UIActivityContentView"].buttons["Close"].tap()
+    }
+    #endif
 
 //
 //    func testLaunchPerformance() throws {

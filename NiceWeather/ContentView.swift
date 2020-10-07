@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-enum UIHelper {
-    // Small hack on the Vstack spacing to adapt better on large devices like iPad:
-    static func createSpacing(geo: GeometryProxy) -> CGFloat {
-        return geo.size.height/50 + geo.size.width/100
-    }
-    
-    static func createTitleSizeModifier(geo: GeometryProxy) -> CGFloat {
-        return 33 + geo.size.height / 40
-    }
-    
-    static func createShareButtonFontAdjustment(geo: GeometryProxy) -> CGFloat {
-        return 10 + geo.size.width * 0.03
-    }
-    
-    static func createShareButtonPaddingAdjustment(geo: GeometryProxy) -> CGPoint {
-        return  CGPoint(x: geo.size.width - (25 + geo.size.width / 70), y: 25 + geo.size.width / 70)
-    }
-}
-
 struct ContentView: View {
     
     @StateObject private var model: WeatherModel = WeatherModel()
@@ -42,7 +23,7 @@ struct ContentView: View {
     }
     
     var weatherCity: String {
-        model.currentWeather?.name ?? ""
+        model.currentWeather?.name ?? "Nowhere"
     }
     
     var windSpeed: Double {
@@ -114,7 +95,11 @@ struct ContentView: View {
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
         }
+        .alert(isPresented: $model.loadingError) {
+            Alert(title: Text("The weather could not be loaded"), message: Text("Pls check your network connection"), dismissButton: .default(Text("OK")))
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

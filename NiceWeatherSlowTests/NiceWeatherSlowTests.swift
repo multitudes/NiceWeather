@@ -39,26 +39,4 @@ class NiceWeatherSlowTests: XCTestCase {
         XCTAssertNil(responseError)
         XCTAssertEqual(statusCode, 200)
     }
-    
-    func testImageDownload() {
-        let lastImage = viewModel.image
-        var downloadedImage: UIImage?
-        let asyncDone = expectation(description: "Async function")
-        
-        NetworkManager.shared.downloadImage(from: "03d") {
-            image in
-            DispatchQueue.main.async {
-                downloadedImage = image }
-            asyncDone.fulfill()
-        }
-        wait(for: [asyncDone], timeout: 4)
-        /* Test the results here */
-        
-        XCTAssertNotNil(downloadedImage)
-        XCTAssertEqual(downloadedImage!.size.width, 100.0)
-        XCTAssertEqual(downloadedImage!.size.height, 100.0)
-        
-        // restore state
-        viewModel.image = lastImage
-    }
 }
