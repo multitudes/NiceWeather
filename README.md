@@ -19,7 +19,7 @@ Build a small app which displays a weather forecast for Berlin using http://open
 ## The execution
 
 The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.
-It will work on iPhone iPad and even on macOS using Catalyst (the share button is UIKit only and will not work therefore I reemoved it for now).
+It will work on iPhone iPad and even on macOS using Catalyst (the share button is UIKit only and will not work therefore it will not be displayed for now).
 
 
 <br>
@@ -46,7 +46,7 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 <br></br>
 
 ### The API
-This is a preview of the API response for Berlin using http://openweathermap.org/ (I used JsonBeautify for the formatting):
+This is a preview of the API response for Berlin using http://openweathermap.org/ 
 
 ```json
 {
@@ -96,7 +96,7 @@ This is a preview of the API response for Berlin using http://openweathermap.org
 
 ### The Model
 The model is indipendent from the view and closely matches the response I get from the API.
-From the API response I will build the model as a struct conforming to the Codable protocol. From the docs I read that some of these variables are not guaranteed to exist in every API response so I will make them optional. Also I will not probaly use all of them.
+From the API response I built the model as a struct conforming to the Codable protocol. From the docs I read that some of these variables are not guaranteed to exist in every API response so I will make them optional.
 
 ```swift
 struct CurrentWeather: Codable {
