@@ -19,9 +19,9 @@ Build a small app which displays a weather forecast for Berlin using http://open
 ## The execution
 
 The app is entirely written in Swift without external libraries. I developed the app using the new Apple framework SwiftUI universal.
-It will work on iPhone iPad and even on macOS (the share button is UIKit only and will not work).
+It will work on iPhone iPad and even on macOS using Catalyst (the share button is UIKit only and will not work therefore I reemoved it for now).
 
-iPhone:
+
 <br>
 <p align="center">
   <img src="ReadMe-Images/niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -29,7 +29,7 @@ iPhone:
 <img src="ReadMe-Images/niceweather.gif" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
-iPad:  
+ 
 
 <br>
 <p align="center">
