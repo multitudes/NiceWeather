@@ -7,13 +7,13 @@
 Build a small app which displays a weather forecast for Berlin using http://openweathermap.org/
 
 #### Requirements
-- Application can be easily extended to support more cities (list of cities included with app’s)
+- Application can be easily extended to support more cities (list of cities included with app)
 - Weather detail screen uses images from the API response
 - Wind speed value presented with animation.
 
 #### Bonus
 - Alternative layout for bigger screens
-- Allow sharing weather to other people
+- Allow sharing of weather to other people
 - Unit test
 
 ## The execution
@@ -95,8 +95,8 @@ This is a preview of the API response for Berlin using http://openweathermap.org
 ```
 
 ### The Model
-The model is indipendent from the view and closely matches the response I get from the API.
-From the API response I built the model as a struct conforming to the Codable protocol. From the docs I read that some of these variables are not guaranteed to exist in every API response so I will make them optional.
+The model is independent of the view and closely matches the response I get from the API.
+From the API response, I built the model as a struct conforming to the Codable protocol. From the docs, I read that some of these variables are not guaranteed to exist in every API response so I will make them optional.
 
 ```swift
 struct CurrentWeather: Codable {
@@ -123,9 +123,9 @@ struct CurrentWeather: Codable {
 }
 ```
 
-### The viewmodel
+### The ViewModel
 
-The viewmodel will use the model to convert the API call to data for our views. It will be a class conforming to the `ObservableObject` protocol and use a property wrapper `@Published` to pass the data to our views. When a published property changes, SwiftUI will refresh our views automatically. This class will be our source of truth!
+The ViewModel will use the model to convert the API call to data for our views. It will be a class conforming to the `ObservableObject` protocol and use a property wrapper `@Published` to pass the data to our views. When published property changes, SwiftUI will refresh our views automatically. This class will be our source of truth!
 
 ```swift
 class WeatherModel: ObservableObject {
@@ -168,8 +168,8 @@ struct NiceWeatherApp: App {
 ```
 
 ### The NetworkManager
-I create a separate `NetworkManager` class which will take care of my network calls. In this class I will call its method `getWeather(for city:country:)` from my viewmodel to get the current weather data and pass it to the view.
-In the same class I have a function to download the image icons provided and I implemented a cache, so we do not need to download the image twice. The images have a very small size in any case, and this will not cause any storage problems.
+I create a separate `NetworkManager` class which will take care of my network calls. In this class, I will call its method `getWeather(for city:country:)` from my ViewModel to get the current weather data and pass it to the view.
+In the same class, I have a function to download the image icons provided and I implemented a cache, so we do not need to download the image twice. The images have a very small size in any case, and this will not cause any storage problems.
 
 ### ATS - Apple Transport Security
 I got the error message:
@@ -185,9 +185,9 @@ Clearly Apple doesnt like URL's starting with `HTTP`. I need to add this to my `
 ```
 
 ### My Data
-I display in the console the converted json data and lay the values in the view passing an instance of my model.
-I will add a picker with a list of cities to chose from. This can be customized later to add more cities, or the user can add cities to the app.
-For the wind animation I will use an icon in SF Symbols which will rotate with a speed depending of the intensity of the wind.
+I display in the console the converted JSON data and lay the values in the view passing an instance of my model.
+I will add a picker with a list of cities to choose from. This can be customized later to add more cities, or the user can add cities to the app.
+For the wind animation, I will use an icon in SF Symbols which will rotate with a speed depending on the intensity of the wind.
 
 ### Accessibility
 Where needed I added labels to buttons that would be difficult for Voiceover to spell like in the sharing button:
@@ -207,7 +207,7 @@ I added some Unit and UITests but are by no mean exhaustive and can be improved 
 ### To do
 
 Still to do:
-- display an alert when user runs out of API calls in the free subscription model.
+- display an alert when the user runs out of API calls in the free subscription model.
 
 
 
