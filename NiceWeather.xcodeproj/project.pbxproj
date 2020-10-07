@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4515A412252CF4FA00A8E51E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515A411252CF4FA00A8E51E /* Device.swift */; };
 		4515A41D252CF93900A8E51E /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515A41C252CF93900A8E51E /* DateTime.swift */; };
+		451611BF252DA5F1009F68BE /* test.json in Sources */ = {isa = PBXBuildFile; fileRef = 451611BE252DA5F1009F68BE /* test.json */; };
 		4526A92C252A60480081BD51 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526A92B252A60480081BD51 /* String+Ext.swift */; };
 		455E6FA5252B2C47000F0058 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E6FA4252B2C47000F0058 /* ShareButton.swift */; };
 		4582F19F252C6FE700A3F464 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */; };
@@ -56,6 +57,7 @@
 		4515A401252CDCC500A8E51E /* NiceWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NiceWeather.entitlements; sourceTree = "<group>"; };
 		4515A411252CF4FA00A8E51E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4515A41C252CF93900A8E51E /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		451611BE252DA5F1009F68BE /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		4526A92B252A60480081BD51 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		455E6FA4252B2C47000F0058 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		451611BD252DA5A9009F68BE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4594FB2825289E9A00C92639 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		4582F1B6252C7BEA00A3F464 /* Extensioons */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		4582F205252CBE4D00A3F464 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				451611BE252DA5F1009F68BE /* test.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -155,7 +166,6 @@
 		4594FB5F2528BE6100C92639 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4594FB2825289E9A00C92639 /* NetworkManager.swift */,
 				45E59BF725277117006FD2C5 /* ShareWeather.swift */,
 				4582F1EB252CA5C500A3F464 /* NWError.swift */,
 				4582F1F0252CA60C00A3F464 /* Constants.swift */,
@@ -212,6 +222,7 @@
 				45E59BC025274884006FD2C5 /* Model */,
 				4582F216252CDA3300A3F464 /* Support */,
 				45E59B9B2527481A006FD2C5 /* Info.plist */,
+				451611BD252DA5A9009F68BE /* Managers */,
 				4582F1B6252C7BEA00A3F464 /* Extensioons */,
 				4594FB5F2528BE6100C92639 /* Utilities */,
 				45E59B982527481A006FD2C5 /* Preview Content */,
@@ -326,6 +337,7 @@
 					};
 					45E59B9F2527481A006FD2C5 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 						TestTargetID = 45E59B8E25274819006FD2C5;
 					};
 					45E59BAA2527481A006FD2C5 = {
@@ -413,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451611BF252DA5F1009F68BE /* test.json in Sources */,
 				45E59BA52527481A006FD2C5 /* NiceWeatherTests.swift in Sources */,
 				4582F208252CBE9300A3F464 /* TestModel.swift in Sources */,
 			);
@@ -613,6 +626,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GGXD5E6AF8;
 				INFOPLIST_FILE = NiceWeatherTests/Info.plist;
@@ -624,6 +638,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NiceWeather.app/NiceWeather";
@@ -635,6 +650,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GGXD5E6AF8;
 				INFOPLIST_FILE = NiceWeatherTests/Info.plist;

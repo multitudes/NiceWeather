@@ -25,10 +25,12 @@ class NiceWeatherUITests: XCTestCase {
         XCTAssert(app.images.count == 5, "Missing images" )
         XCTAssertTrue(app.images["thermometer"].exists)
         XCTAssertTrue(app.images["current weather icon"].exists)
-        XCTAssertTrue(app.images["paperplane.fill"].exists)
+        XCTAssertTrue(app.images["wind direction"].exists)
         XCTAssertTrue(app.images["wind"].exists)
         XCTAssertTrue(app.images["wind speed animation"].exists)
     }
+    
+
 //
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

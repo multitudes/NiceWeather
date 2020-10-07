@@ -22,6 +22,16 @@ class NiceWeatherTests: XCTestCase {
       super.tearDown()
     }
 
+    func testContentView() {
+        let cv = ContentView()
+        let body = cv.body
+        XCTAssertNotNil(body)
+    }
+    
+    func testTitle() {
+        
+    }
+    
     func testValidCallToAPIGetsHTTPStatusCode200(){
         let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&units=metric&APPID=385417c76d45ab1972316b6ffd8b6efa")
         let promise = expectation(description: "Completion handler invoked")
@@ -37,7 +47,7 @@ class NiceWeatherTests: XCTestCase {
         XCTAssertNil(responseError)
         XCTAssertEqual(statusCode, 200)
     }
-    
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
