@@ -206,6 +206,7 @@ I added some Unit and UITests but are by no mean exhaustive and can be improved 
 ### To do
 
 Still to do:
+- Add a button giving the user to edit the list of locations in the picker.
 - display an alert when the user runs out of API calls in the free subscription model.
 
 ### Resources used
