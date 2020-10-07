@@ -24,7 +24,7 @@ extension WeatherModel {
 
 class WeatherModel: ObservableObject {
     
-    @Published private(set) var currentWeather: CurrentWeather?
+    @Published var currentWeather: CurrentWeather?
     
     @Published var currentLocation: Location = loadLastLocation() {
         didSet {

@@ -46,7 +46,6 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                //let dateFormatter = DateFormatter()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .secondsSince1970
                 let response = try decoder.decode(CurrentWeather.self, from: data)
@@ -89,7 +88,7 @@ class NetworkManager {
                 }
             
             self.cache.setObject(image, forKey: cacheKey)
-            print("image")
+            print("image set in cache")
             completed(image)
         }
         

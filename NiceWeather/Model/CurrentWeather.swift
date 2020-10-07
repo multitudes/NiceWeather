@@ -8,6 +8,16 @@
 import Foundation
 
 struct CurrentWeather: Codable {
+    
+    var datetime: String {
+        let date = dt
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: timezone)
+        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
+        return formatter.string(from: date)
+    }
+
+
     //var coord: Coordinates
     var weather: [Weather]
     //var base: Base?

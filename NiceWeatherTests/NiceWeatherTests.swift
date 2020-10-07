@@ -10,52 +10,44 @@ import XCTest
 
 class NiceWeatherTests: XCTestCase {
 
-    var sut: URLSession!
-
-    override func setUp() {
-      super.setUp()
-      sut = URLSession(configuration: .default)
-    }
-
-    override func tearDown() {
-      sut = nil
-      super.tearDown()
-    }
-
-    func testContentView() {
-        let cv = ContentView()
-        let body = cv.body
-        XCTAssertNotNil(body)
-    }
+    var viewModel: WeatherModel!
+    var currentWeather: CurrentWeather?
+    var lastLocation: Location!
+    var contentView: ContentView!
     
-    func testTitle() {
-        
-    }
-    
-    func testValidCallToAPIGetsHTTPStatusCode200(){
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&units=metric&APPID=385417c76d45ab1972316b6ffd8b6efa")
-        let promise = expectation(description: "Completion handler invoked")
-        var statusCode: Int?
-        var responseError: Error?
-        let dataTask = sut.dataTask(with: url!) { data, response, error in
-            statusCode = (response as? HTTPURLResponse)?.statusCode
-            responseError = error
-            promise.fulfill()
-        }
-        dataTask.resume()
-        wait(for: [promise], timeout: 5)
-        XCTAssertNil(responseError)
-        XCTAssertEqual(statusCode, 200)
-    }
-
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = WeatherModel()
+        lastLocation = WeatherModel.loadLastLocation()
+        contentView = ContentView()
+        let data = loadStub(name: "weathertest", extension: "json")
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let weatherData = try decoder.decode(CurrentWeather.self, from: data)
+        currentWeather = weatherData
+        viewModel.currentLocation = Location(city: "Berlin", countryCode: "De")
         
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // bring back orig state
+        viewModel.currentLocation = lastLocation
     }
+
+    func testContentView() {
+        let body = contentView.body
+        XCTAssertNotNil(body)
+    }
+    
+    func testDateTime() {
+        //let 
+       // XCTAssertEqual(viewModel.date, "Mon, June 22")
+    }
+//    func testTitle() {
+//        cv = ContentView()
+//       // let body = cv?.
+//    }
+
 
     func testExample() throws {
         // This is an example of a functional test case.

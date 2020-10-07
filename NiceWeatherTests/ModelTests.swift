@@ -27,7 +27,7 @@ class TestModel: XCTestCase {
         XCTAssertNotNil(defaultLocations.count)
     }
     
-    func testLastLocations() {
+    func testDefaultLastLocations() {
         let defaultLastLocation = WeatherModel.defaultLastLocation
         XCTAssertNotNil(defaultLastLocation)
     }
@@ -46,11 +46,16 @@ class TestModel: XCTestCase {
     }
     
     func testcurrentLocationPersistence() {
+        let lastLocation = WeatherModel.loadLastLocation()
         sut?.currentLocation = Location(city: "Paris", countryCode: "US")
         sut?.persistLastLocation()
         XCTAssert(WeatherModel.loadLastLocation() == sut?.currentLocation , "location does not persist")
+        // restoring previous state
+        sut?.currentLocation = lastLocation
     }
 
+    
+    
     func testPerformanceloadLocations() throws {
         // This is an example of a performance test case.
         self.measure {

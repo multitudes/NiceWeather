@@ -34,14 +34,16 @@ struct ContentView: View {
     @State private var isSharedPresented: Bool = false
     @State private var citySelection: Location = WeatherModel.loadLastLocation()
     
+//    var datetime: String {
+//        let date = model.currentWeather?.dt ?? Date()
+//        let formatter = DateFormatter()
+//        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
+//        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
+//        return formatter.string(from: date)
+//    }
     var datetime: String {
-        let date = model.currentWeather?.dt ?? Date()
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: model.currentWeather?.timezone ?? 0)
-        formatter.dateFormat = "EEEE, MMMM dd, yyyy h:mm a"
-        return formatter.string(from: date)
+        model.currentWeather?.datetime ?? ""
     }
-    
     var weatherDescription: String {
         model.currentWeather?.weather[0].description ?? ""
     }
@@ -75,6 +77,7 @@ struct ContentView: View {
             ZStack{
                 BackgroundGradient(geo: geo)
                 
+                // this is to be able to use the app with catalyst on macOS
                 if Device.isiPhone || Device.isiPad {
                     ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
                 } else {
