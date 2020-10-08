@@ -13,3 +13,10 @@ func getTempformattedString(temp: Double) -> String {
     formatter.numberFormatter.maximumFractionDigits = 0
     return formatter.string(from: temperature)
 }
+
+func getSpeedformattedString(speed: Double) -> String {
+    let formatter = MeasurementFormatter()
+    let speed = Measurement<UnitSpeed>(value: speed, unit: .metersPerSecond)
+    formatter.numberFormatter.maximumFractionDigits = 1
+    return formatter.string(from: speed)
+}

@@ -14,7 +14,7 @@ struct CurrentWeather: Codable {
     //var base: Base?
     var main: MainWeatherData
     //var visibility: Double?
-    var wind: Wind?
+    var wind: Wind
     //var clouds: Cloud?
     var dt: Date
     //var sys: Sys?
@@ -70,8 +70,8 @@ extension CurrentWeather {
     }
     
     var degrees: Double {
-        guard case wind?.deg = wind?.deg else { return 0.0 }
-        return (-45 - 180) + ((wind?.deg)!)
+        guard case wind.deg = wind.deg else { return 0.0 }
+        return (-45 - 180) + ((wind.deg)!)
     }
     
     var temperature: String {
@@ -90,4 +90,7 @@ extension CurrentWeather {
         return getTempformattedString(temp: main.tempMax)
     }
   
+    var speed: String {
+        return getSpeedformattedString(speed: wind.speed)
+    }
 }

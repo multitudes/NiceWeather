@@ -27,7 +27,7 @@ struct ContentView: View {
     }
     
     var windSpeed: Double {
-        model.currentWeather?.wind?.speed ?? 0.0
+        model.currentWeather?.wind.speed ?? 0.0
     }
     
     var direction: Double {
