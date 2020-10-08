@@ -39,4 +39,23 @@ class NiceWeatherSlowTests: XCTestCase {
         XCTAssertNil(responseError)
         XCTAssertEqual(statusCode, 200)
     }
+    func testValidCallToImageAPIAndStatusCode200(){
+        // for image icon 04d 
+        let url = URL(string: "http://openweathermap.org/img/wn/04d@2x.png")
+        let promise = expectation(description: "Completion handler invoked")
+        var statusCode: Int?
+        var responseError: Error?
+        let dataTask = sut.dataTask(with: url!) { data, response, error in
+            statusCode = (response as? HTTPURLResponse)?.statusCode
+            responseError = error
+            promise.fulfill()
+        }
+        dataTask.resume()
+        wait(for: [promise], timeout: 5)
+        XCTAssertNil(responseError)
+        XCTAssertEqual(statusCode, 200)
+    }
+    
+    
+    
 }
