@@ -85,6 +85,13 @@ class NiceWeatherTests: XCTestCase {
     func testDefaultLocations() {
         let defaultLocations = WeatherModel.defaultLocations
         XCTAssertNotNil(defaultLocations.count)
+        XCTAssertTrue(defaultLocations.count == 3 , "Number of default locations is not three")
+        XCTAssertTrue(defaultLocations == [
+            Location(city: "Berlin", countryCode: "DE"),
+            Location(city: "Tokyo", countryCode: "JP"),
+            Location(city: "Paris", countryCode: "FR"),
+        ], "default locations not correct")
+        
     }
     
     func testDefaultLastLocations() {
