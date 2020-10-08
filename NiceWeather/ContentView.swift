@@ -52,6 +52,10 @@ struct ContentView: View {
         return getHumidityPercentageFormattedString(humidity: humidity)
     }
     
+    var sharedWeather: String {
+        "The weather for \(weatherCity) as of \(datetime):\n\(weatherDescription.capitalized) with a temperature of \(temperature) and a wind speed of \(windSpeed.1).\nThe minimum for the day is \(tempMin) and the maximum will be \(tempMax) with \(humidity) humidity."
+    }
+
     var body: some View {
         GeometryReader { geo in
             ZStack{
@@ -88,7 +92,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isSharedPresented) {
-                ActivityViewController(activityItems: [String(format:"The weather for \(weatherCity) as of \(datetime): \(weatherDescription.capitalized) with a temperature of %.f degrees Celsius",temperature)])
+                ActivityViewController(activityItems: [sharedWeather])
                     .environment(\.colorScheme, model.isDayTime ? .light : .dark )
             }
             .alert(isPresented: $model.loadingError) {
