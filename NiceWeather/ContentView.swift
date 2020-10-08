@@ -26,8 +26,9 @@ struct ContentView: View {
         model.currentWeather?.name ?? "Nowhere"
     }
     
-    var windSpeed: Double {
-        model.currentWeather?.wind.speed ?? 0.0
+    var windSpeed: (Double, String) {
+        let speed: Double = model.currentWeather?.wind.speed ?? 0.0
+        return (double: speed, stringFormatted: getSpeedformattedString(speed: speed))
     }
     
     var direction: Double {
