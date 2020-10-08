@@ -26,7 +26,7 @@ class WeatherModel: ObservableObject {
     
     @Published private(set) var currentWeather: CurrentWeather?
     
-    @Published var currentLocation: Location = loadLastLocation() {
+    @Published private(set) var currentLocation: Location = loadLastLocation() {
         didSet {
             persistLastLocation()
         }
@@ -105,11 +105,11 @@ class WeatherModel: ObservableObject {
         }
     }
     
-    // TODO: - editing locations not yet implemented in app
-    func updateLocation(with location: Location){
+    func updateCurrentLocation(with location: Location){
         print(location)
         self.currentLocation = location
     }
+    // TODO: - editing locations not yet implemented in app
     
     func persistLocations() {
         let encoder = JSONEncoder()

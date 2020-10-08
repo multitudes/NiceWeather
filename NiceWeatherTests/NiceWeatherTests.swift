@@ -6,6 +6,7 @@
 //
 
 import XCTest
+
 @testable import NiceWeather
 
 class NiceWeatherTests: XCTestCase {
@@ -25,12 +26,13 @@ class NiceWeatherTests: XCTestCase {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let weatherData = try decoder.decode(CurrentWeather.self, from: data)
         currentWeather = weatherData
-        viewModel.currentLocation = Location(city: "Berlin", countryCode: "De")
+        viewModel.updateCurrentLocation(with: Location(city: "Berlin", countryCode: "De"))
+        
     }
 
     override func tearDownWithError() throws {
         // bring back orig state
-        viewModel.currentLocation = lastLocation
+        viewModel.updateCurrentLocation(with: lastLocation)
         viewModel = nil
         currentWeather = nil
         lastLocation = nil
@@ -114,11 +116,11 @@ class NiceWeatherTests: XCTestCase {
     
     func testcurrentLocationPersistence() {
         let lastLocation = WeatherModel.loadLastLocation()
-        viewModel?.currentLocation = Location(city: "Paris", countryCode: "US")
+        viewModel?.updateCurrentLocation(with: Location(city: "Paris", countryCode: "FR"))
         viewModel?.persistLastLocation()
         XCTAssert(WeatherModel.loadLastLocation() == viewModel?.currentLocation , "location does not persist")
         // restoring previous state
-        viewModel?.currentLocation = lastLocation
+        viewModel?.updateCurrentLocation(with: lastLocation)
     }
 
     func testPerformanceloadLocations() throws {

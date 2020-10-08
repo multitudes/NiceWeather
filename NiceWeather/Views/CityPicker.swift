@@ -24,7 +24,7 @@ struct CityPicker: View {
         .padding()
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .onChange(of: citySelection, perform: { value in
-            model.updateLocation(with: value)
+            model.updateCurrentLocation(with: value)
             model.updateWeather()
         })
     }
