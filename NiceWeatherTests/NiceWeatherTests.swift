@@ -43,7 +43,7 @@ class NiceWeatherTests: XCTestCase {
         let body = contentView.body
         XCTAssertNotNil(body)
     }
-    
+
     func testDateTime() {
         XCTAssertEqual(currentWeather?.datetime, "Wednesday, October 07, 9:27 AM")
     }
@@ -60,8 +60,12 @@ class NiceWeatherTests: XCTestCase {
         XCTAssertEqual(currentWeather?.wind?.speed, 2.6)
     }
        
-    func testWindDirection() {
+    func testWindDegrees() {
         XCTAssertEqual(currentWeather?.wind?.deg, 210)
+    }
+    
+    func testWindDirectioncomputed() {
+        XCTAssertEqual(currentWeather?.degrees, -15)
     }
     
     func testWindTemperature() {
