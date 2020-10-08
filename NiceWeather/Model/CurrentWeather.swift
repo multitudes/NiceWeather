@@ -65,7 +65,7 @@ extension CurrentWeather {
         let date = dt
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: timezone)
-        formatter.setLocalizedDateFormatFromTemplate("EEEE, MMMM dd, h:mm a")
+        formatter.setLocalizedDateFormatFromTemplate("EEEE, MMMM d, h:mm a")
         return formatter.string(from: date)
     }
     
