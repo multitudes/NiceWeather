@@ -203,6 +203,26 @@ The layout would not change for my app but I tweaked the sizes of the button and
 ### Unit tests
 I added some Unit and UITests but are by no mean exhaustive and can be improved further.
 
+### Localisation
+As shown in the WWDC20 talk about formatters, unit of measurement values can be converted to a localised string, which takes into account the region and language. 
+Therefore I refactored the temperature values to return a string, where the user can change Fahrenheit or Celsius from the iPhone setting region, and not from the app, with enormous advantages with support of over 100 languages.  
+I made some utility functions to convert the units of measurement for ex:
+
+```swift
+func getTempformattedString(temp: Double) -> String {
+    let formatter = MeasurementFormatter()
+    let temperature = Measurement<UnitTemperature>(value: temp, unit: .celsius)
+    formatter.numberFormatter.maximumFractionDigits = 0
+    return formatter.string(from: temperature)
+}
+func getSpeedformattedString(speed: Double) -> String {
+    let formatter = MeasurementFormatter()
+    let speed = Measurement<UnitSpeed>(value: speed, unit: .metersPerSecond)
+    formatter.numberFormatter.maximumFractionDigits = 1
+    return formatter.string(from: speed)
+}
+```
+
 ### To do
 
 Still to do:
@@ -214,3 +234,4 @@ Still to do:
 ### Resources used
 - jsonbeautify to display and validate JSON files: https://jsonbeautify.com
 - App Icon from Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> and resized with [Sketch](https://www.sketch.com) 
+- WWDC20 talk about formatters: https://developer.apple.com/videos/play/wwdc2020/10160/ 
