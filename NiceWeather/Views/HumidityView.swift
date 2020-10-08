@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HumidityView: View {
-    var humidity: Int
+    var humidity: String
     
     var body: some View {
-        Text("Humidity: \(humidity) %")
+        Text("Humidity: \(humidity)")
             .font(.title2)
             .bold()
             .opacity(0.8)

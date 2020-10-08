@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var timer: Timer?
     @State private var isSharedPresented: Bool = false
     @State private var citySelection: Location = WeatherModel.loadLastLocation()
-
+    
     var datetime: String {
         model.currentWeather?.datetime ?? ""
     }
@@ -47,8 +47,9 @@ struct ContentView: View {
         model.currentWeather?.maxTemperature ?? ""
     }
     
-    var humidity: Int {
-        model.currentWeather?.main.humidity ?? 0
+    var humidity: String {
+        let humidity = model.currentWeather?.main.humidity ?? 0
+        return getHumidityPercentageFormattedString(humidity: humidity)
     }
     
     var body: some View {
@@ -103,7 +104,7 @@ struct ContentView: View {
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
         }
-
+        
     }
     
 }

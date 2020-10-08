@@ -20,3 +20,10 @@ func getSpeedformattedString(speed: Double) -> String {
     formatter.numberFormatter.maximumFractionDigits = 1
     return formatter.string(from: speed)
 }
+
+func getHumidityPercentageFormattedString(humidity: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .percent
+    let NShumidity = NSNumber(value:(humidity) / 100)
+    return formatter.string(from: NShumidity)!
+}

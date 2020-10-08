@@ -10,6 +10,7 @@ import SwiftUI
 struct WeatherDescriptionView: View {
     var image: UIImage?
     var weatherDescription: String
+    
     var body: some View {
         VStack{
             ZStack{
