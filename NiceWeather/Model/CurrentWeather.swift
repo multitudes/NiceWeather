@@ -49,10 +49,6 @@ struct CurrentWeather: Codable {
     struct Wind: Codable {
         let speed: Double
         let deg: Double?
-        var degrees: Double {
-            guard let deg = deg else { return 0.0 }
-            return (-45 - 180) + (deg)
-        }
     }
     
     struct Sys: Codable {}
@@ -70,5 +66,8 @@ extension CurrentWeather {
         formatter.dateFormat = "EEEE, MMMM dd, h:mm a"
         return formatter.string(from: date)
     }
-
+    var degrees: Double {
+        guard case wind?.deg = wind?.deg else { return 0.0 }
+        return (-45 - 180) + ((wind?.deg)!)
+    }
 }
