@@ -9,15 +9,6 @@ import Foundation
 
 struct CurrentWeather: Codable {
     
-    var datetime: String {
-        let date = dt
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: timezone)
-        formatter.dateFormat = "EEEE, MMMM dd, h:mm a"
-        return formatter.string(from: date)
-    }
-
-
     //var coord: Coordinates
     var weather: [Weather]
     //var base: Base?
@@ -58,6 +49,10 @@ struct CurrentWeather: Codable {
     struct Wind: Codable {
         let speed: Double
         let deg: Double?
+        var degrees: Double {
+            guard let deg = deg else { return 0.0 }
+            return (-45 - 180) + (deg)
+        }
     }
     
     struct Sys: Codable {}
@@ -67,3 +62,13 @@ struct CurrentWeather: Codable {
     }
 }
 
+extension CurrentWeather {
+    var datetime: String {
+        let date = dt
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: timezone)
+        formatter.dateFormat = "EEEE, MMMM dd, h:mm a"
+        return formatter.string(from: date)
+    }
+
+}

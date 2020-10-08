@@ -109,6 +109,7 @@ class WeatherModel: ObservableObject {
         print(location)
         self.currentLocation = location
     }
+    
     // TODO: - editing locations not yet implemented in app
     
     func persistLocations() {

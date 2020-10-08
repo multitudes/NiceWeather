@@ -12,9 +12,6 @@ struct WindRose: View {
     
     var windSpeed: Double
     var direction: Double
-    var degrees: Double {
-        return -45 + direction - 180
-    }
     
     var windRoseAnimation: Animation {
         if isAnimating {
@@ -32,7 +29,7 @@ struct WindRose: View {
                 Text("Wind speed: \(windSpeed, specifier: "%.1f") m/s ")
                     .bold()
                 SFSymbols.windDirection
-                    .rotationEffect(Angle(degrees: degrees))
+                    .rotationEffect(Angle(degrees: direction))
                     .accessibility(label: Text("wind direction"))
             }
             .font(Font.title2.monospacedDigit())

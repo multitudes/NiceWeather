@@ -45,13 +45,6 @@
 			remoteGlobalIDString = 45E59B8E25274819006FD2C5;
 			remoteInfo = NiceWeather;
 		};
-		45DAF58A252F1D9E0096E12E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E59B8725274819006FD2C5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45E59B8E25274819006FD2C5;
-			remoteInfo = NiceWeather;
-		};
 		45E59BA12527481A006FD2C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45E59B8725274819006FD2C5 /* Project object */;
@@ -90,7 +83,6 @@
 		459FBAAA252DB65200173158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459FBAD0252DC16800173158 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		459FBADE252DC1B700173158 /* weathertest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weathertest.json; sourceTree = "<group>"; };
-		45DAF585252F1D9E0096E12E /* NiceWeatherTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NiceWeatherTests2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E59B8F25274819006FD2C5 /* NiceWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceWeatherApp.swift; sourceTree = "<group>"; };
 		45E59B9425274819006FD2C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,13 +103,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		459FBAA3252DB65200173158 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45DAF582252F1D9E0096E12E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,7 +220,6 @@
 				45E59BA02527481A006FD2C5 /* NiceWeatherTests.xctest */,
 				45E59BAB2527481A006FD2C5 /* NiceWeatherUITests.xctest */,
 				459FBAA6252DB65200173158 /* NiceWeatherSlowTests.xctest */,
-				45DAF585252F1D9E0096E12E /* NiceWeatherTests2.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,24 +301,6 @@
 			productReference = 459FBAA6252DB65200173158 /* NiceWeatherSlowTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		45DAF584252F1D9E0096E12E /* NiceWeatherTests2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 45DAF58E252F1D9F0096E12E /* Build configuration list for PBXNativeTarget "NiceWeatherTests2" */;
-			buildPhases = (
-				45DAF581252F1D9E0096E12E /* Sources */,
-				45DAF582252F1D9E0096E12E /* Frameworks */,
-				45DAF583252F1D9E0096E12E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45DAF58B252F1D9E0096E12E /* PBXTargetDependency */,
-			);
-			name = NiceWeatherTests2;
-			productName = NiceWeatherTests2;
-			productReference = 45DAF585252F1D9E0096E12E /* NiceWeatherTests2.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		45E59B8E25274819006FD2C5 /* NiceWeather */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45E59BB42527481A006FD2C5 /* Build configuration list for PBXNativeTarget "NiceWeather" */;
@@ -401,10 +367,6 @@
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = 45E59B8E25274819006FD2C5;
 					};
-					45DAF584252F1D9E0096E12E = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 45E59B8E25274819006FD2C5;
-					};
 					45E59B8E25274819006FD2C5 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -436,20 +398,12 @@
 				45E59B9F2527481A006FD2C5 /* NiceWeatherTests */,
 				45E59BAA2527481A006FD2C5 /* NiceWeatherUITests */,
 				459FBAA5252DB65200173158 /* NiceWeatherSlowTests */,
-				45DAF584252F1D9E0096E12E /* NiceWeatherTests2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		459FBAA4252DB65200173158 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45DAF583252F1D9E0096E12E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -488,13 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				459FBAA9252DB65200173158 /* NiceWeatherSlowTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45DAF581252F1D9E0096E12E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,11 +498,6 @@
 			target = 45E59B8E25274819006FD2C5 /* NiceWeather */;
 			targetProxy = 459FBAAB252DB65200173158 /* PBXContainerItemProxy */;
 		};
-		45DAF58B252F1D9E0096E12E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45E59B8E25274819006FD2C5 /* NiceWeather */;
-			targetProxy = 45DAF58A252F1D9E0096E12E /* PBXContainerItemProxy */;
-		};
 		45E59BA22527481A006FD2C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 45E59B8E25274819006FD2C5 /* NiceWeather */;
@@ -602,48 +544,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeatherSlowTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NiceWeather.app/NiceWeather";
-			};
-			name = Release;
-		};
-		45DAF58C252F1D9E0096E12E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GGXD5E6AF8;
-				INFOPLIST_FILE = NiceWeatherTests2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeatherTests2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NiceWeather.app/NiceWeather";
-			};
-			name = Debug;
-		};
-		45DAF58D252F1D9E0096E12E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GGXD5E6AF8;
-				INFOPLIST_FILE = NiceWeatherTests2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.laurentb.NiceWeatherTests2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -702,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -757,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -912,15 +812,6 @@
 			buildConfigurations = (
 				459FBAAD252DB65200173158 /* Debug */,
 				459FBAAE252DB65200173158 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45DAF58E252F1D9F0096E12E /* Build configuration list for PBXNativeTarget "NiceWeatherTests2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45DAF58C252F1D9E0096E12E /* Debug */,
-				45DAF58D252F1D9E0096E12E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

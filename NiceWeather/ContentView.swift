@@ -31,7 +31,7 @@ struct ContentView: View {
     }
     
     var direction: Double {
-        model.currentWeather?.wind?.deg ?? 0.0
+        model.currentWeather?.wind?.degrees ?? 0.0
     }
     
     var temperature: Double {
