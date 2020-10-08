@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var timer: Timer?
     @State private var isSharedPresented: Bool = false
     @State private var citySelection: Location = WeatherModel.loadLastLocation()
-
+    
     var datetime: String {
         model.currentWeather?.datetime ?? ""
     }
@@ -26,24 +26,30 @@ struct ContentView: View {
         model.currentWeather?.name ?? "Nowhere"
     }
     
-    var windSpeed: Double {
-        model.currentWeather?.wind?.speed ?? 0.0
+    var windSpeed: (Double, String) {
+        let speed: Double = model.currentWeather?.wind.speed ?? 0.0
+        return (double: speed, stringFormatted: getSpeedformattedString(speed: speed))
     }
     
     var direction: Double {
         model.currentWeather?.degrees ?? 0.0
     }
     
-    var temperature: Double {
-        model.currentWeather?.main.temp ?? 0.0
+    var temperature: String {
+        model.currentWeather?.temperature ?? ""
     }
     
-    var tempMin: Double {
-        model.currentWeather?.main.tempMin ?? 0.0
+    var tempMin: String {
+        model.currentWeather?.minTemperature ?? ""
     }
     
-    var tempMax: Double {
-        model.currentWeather?.main.tempMax ?? 0.0
+    var tempMax: String {
+        model.currentWeather?.maxTemperature ?? ""
+    }
+    
+    var humidity: String {
+        let humidity = model.currentWeather?.main.humidity ?? 0
+        return getHumidityPercentageFormattedString(humidity: humidity)
     }
     
     var body: some View {
@@ -71,7 +77,7 @@ struct ContentView: View {
                     
                     TempMaxMin(tempMin: tempMin , tempMax: tempMax)
                     
-                    HumidityView(model: model)
+                    HumidityView(humidity: humidity)
                     
                     WindRose(windSpeed: windSpeed, direction: direction)
                     
@@ -98,7 +104,7 @@ struct ContentView: View {
             }
             .preferredColorScheme(model.isDayTime ? .light : .dark )
         }
-
+        
     }
     
 }

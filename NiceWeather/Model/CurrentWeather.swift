@@ -14,7 +14,7 @@ struct CurrentWeather: Codable {
     //var base: Base?
     var main: MainWeatherData
     //var visibility: Double?
-    var wind: Wind?
+    var wind: Wind
     //var clouds: Cloud?
     var dt: Date
     //var sys: Sys?
@@ -39,11 +39,11 @@ struct CurrentWeather: Codable {
     
     struct MainWeatherData: Codable {
         let temp: Double
-        let feelsLike: Double?
+        let feelsLike: Double
         let tempMin: Double
         let tempMax: Double
         let pressure: Int?
-        let humidity: Int
+        let humidity: Double
     }
     
     struct Wind: Codable {
@@ -58,16 +58,39 @@ struct CurrentWeather: Codable {
     }
 }
 
+// MARK: - Extension
+
 extension CurrentWeather {
     var datetime: String {
         let date = dt
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: timezone)
-        formatter.dateFormat = "EEEE, MMMM dd, h:mm a"
+        formatter.setLocalizedDateFormatFromTemplate("EEEE, MMMM d, h:mm a")
         return formatter.string(from: date)
     }
+    
     var degrees: Double {
-        guard case wind?.deg = wind?.deg else { return 0.0 }
-        return (-45 - 180) + ((wind?.deg)!)
+        guard case wind.deg = wind.deg else { return 0.0 }
+        return (-45 - 180) + ((wind.deg)!)
+    }
+    
+    var temperature: String {
+        return getTempformattedString(temp: main.temp)
+    }
+    
+    var feelsLikeTemperature: String {
+        return getTempformattedString(temp: main.feelsLike)
+    }
+    
+    var minTemperature: String {
+        return getTempformattedString(temp: main.tempMin)
+    }
+    
+    var maxTemperature: String {
+        return getTempformattedString(temp: main.tempMax)
+    }
+  
+    var speed: String {
+        return getSpeedformattedString(speed: wind.speed)
     }
 }

@@ -8,7 +8,8 @@
 import UIKit
 
 struct Device {
-    
+    // UIDevice.current.userInterfaceIdiom == .pad
+    // or UIDevice.current.userInterfaceIdiom == .phone would not work in this case because Catalyst uses the ipad idiom apparently
     static var isiPhone: Bool {
         struct Singleton {
             static let deviceName = UIDevice.current.name
