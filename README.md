@@ -207,6 +207,8 @@ I added some Unit and UITests but are by no mean exhaustive and can be improved 
 
 Still to do:
 - Add a button giving the user to edit the list of locations in the picker.
+- Add a settings button to switch between metric and imperial.
+- Have the possibility to display the "Feels like" temperature would be nice. Maybe hidden under the actual temperature. The usser tap the current temperature and it the "feels like" temperature value gets displayed. 
 - display an alert when the user runs out of API calls in the free subscription model.
 
 ### Resources used
