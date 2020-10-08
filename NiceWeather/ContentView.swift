@@ -34,16 +34,16 @@ struct ContentView: View {
         model.currentWeather?.degrees ?? 0.0
     }
     
-    var temperature: Double {
-        model.currentWeather?.main.temp ?? 0.0
+    var temperature: String {
+        model.currentWeather?.temperature ?? ""
     }
     
-    var tempMin: Double {
-        model.currentWeather?.main.tempMin ?? 0.0
+    var tempMin: String {
+        model.currentWeather?.minTemperature ?? ""
     }
     
-    var tempMax: Double {
-        model.currentWeather?.main.tempMax ?? 0.0
+    var tempMax: String {
+        model.currentWeather?.maxTemperature ?? ""
     }
     
     var body: some View {

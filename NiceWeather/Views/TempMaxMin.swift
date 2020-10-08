@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TempMaxMin: View {
-    var tempMin: Double
-    var tempMax: Double
+    var tempMin: String
+    var tempMax: String
     
     var body: some View {
         HStack {
-            Text("\(tempMax, specifier: "%.f")°").font(.title2).bold()
-            Text("\(tempMin, specifier: "%.f")°").font(.title2).opacity(0.8)
+            Text(tempMax).font(.title2).bold()
+            Text(tempMin).font(.title2).opacity(0.8)
         }
     }
 }

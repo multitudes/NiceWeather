@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    var temperature: Double
+    var temperature: String
     
     var body: some View {
         HStack {
             SFSymbols.thermometer
                 .font(.largeTitle)
-            Text("\(temperature, specifier: "%.f")°").font(.largeTitle)
+            Text(temperature).font(.largeTitle)
         }
     }
 }
