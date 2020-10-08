@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HumidityView: View {
-    var model: WeatherModel
-    
-    var humidity: Int {
-        model.currentWeather?.main.humidity ?? 0
-    }
+    var humidity: Int
     
     var body: some View {
         Text("Humidity: \(humidity) %")

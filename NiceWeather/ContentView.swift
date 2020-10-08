@@ -46,6 +46,10 @@ struct ContentView: View {
         model.currentWeather?.maxTemperature ?? ""
     }
     
+    var humidity: Int {
+        model.currentWeather?.main.humidity ?? 0
+    }
+    
     var body: some View {
         GeometryReader { geo in
             ZStack{
@@ -71,7 +75,7 @@ struct ContentView: View {
                     
                     TempMaxMin(tempMin: tempMin , tempMax: tempMax)
                     
-                    HumidityView(model: model)
+                    HumidityView(humidity: humidity)
                     
                     WindRose(windSpeed: windSpeed, direction: direction)
                     
