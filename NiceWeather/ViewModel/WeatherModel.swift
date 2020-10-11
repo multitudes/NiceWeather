@@ -38,9 +38,9 @@ class WeatherModel: ObservableObject {
 		}
 	}
 
-	@Published var image: UIImage = Placeholders.WeatherImage
+	@Published private(set) var image: UIImage = Placeholders.WeatherImage
 
-	@Published var isDayTime: Bool = true
+	@Published private(set) var isDayTime: Bool = true
 
 	@Published var loadingError: Bool = false
 
@@ -56,11 +56,9 @@ class WeatherModel: ObservableObject {
 					print(response) //check
 					DispatchQueue.main.async {
 						self.currentWeather = response
-						let icon = response.weather[0].icon
-						self.updateImage(icon: icon)
-						// I found out that the images returned at night time at the location have a format ending with n like '04n'and are better suitable for displaying in dark mode.
-						if icon[2] == "n" { self.isDayTime = false } else { self.isDayTime = true }
-					}
+						}
+					let icon = response.weather[0].icon
+					self.updateImage(icon: icon)
 				case .failure(let error):
 					print(error)
 					DispatchQueue.main.async {
@@ -80,9 +78,12 @@ class WeatherModel: ObservableObject {
 
 	func updateImage(icon: String){
 		print("icon \(icon)")
-		NetworkManager.shared.downloadImage(from: icon) { [weak self] image in
-			guard let self = self else { return }
-			DispatchQueue.main.async { self.image = image ?? Placeholders.WeatherImage }
+		NetworkManager.shared.downloadImage(from: icon) { image in
+			DispatchQueue.main.async {
+				self.image = image ?? Placeholders.WeatherImage
+				// I found out that the images returned at night time at the location have a format ending with n like '04n'and are better suitable for displaying in dark mode.
+				if icon[2] == "n" { self.isDayTime = false } else { self.isDayTime = true }
+			}
 		}
 	}
 
