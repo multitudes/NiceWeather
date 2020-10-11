@@ -53,7 +53,7 @@ struct ContentView: View {
     }
     
     var sharedWeather: String {
-        "The weather for \(weatherCity) as of \(datetime):\n\(weatherDescription.capitalized) with a temperature of \(temperature) and a wind speed of \(windSpeed.1).\nThe minimum for the day is \(tempMin) and the maximum will be \(tempMax) with \(humidity) humidity."
+        "\(weatherCity.capitalized):\n\(datetime)\n\(weatherDescription.capitalized)\n🌡 \(temperature)\n💨 \(windSpeed.1)\n💧 \(humidity)"
     }
 
     var body: some View {
