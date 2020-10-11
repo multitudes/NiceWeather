@@ -16,12 +16,12 @@ class NetworkManager {
     private let baseURL = "http://api.openweathermap.org/data/2.5/weather?q="
     private let myAPI = "385417c76d45ab1972316b6ffd8b6efa"
     let cache           = NSCache<NSString, UIImage>()
-	//var locale: String = Locale.current.languageCode!
-	var locale: String = "zh"
+	  var locale: String = Locale.current.languageCode!
+
     private init() {}
     
     func getWeather(for city: String, country: String, completed: @escaping (Result<CurrentWeather, NWError>) -> Void) {
-			print("region \(Locale.current.regionCode!) languageCode \(Locale.current.languageCode!)")
+			  print("region \(Locale.current.regionCode!) languageCode \(Locale.current.languageCode!)")
         let endpoint = baseURL + "\(city),\(country)&units=metric&APPID=\(myAPI)&lang=\(locale)"
         print("endpoint: \(endpoint)")
         guard let url = URL(string: endpoint) else {
