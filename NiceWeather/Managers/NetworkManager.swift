@@ -8,6 +8,7 @@
 import UIKit
 
 class NetworkManager {
+
     static let shared   = NetworkManager()
     
     // example of my API call
@@ -102,4 +103,5 @@ class NetworkManager {
         
         task.resume()
     }
+
 }

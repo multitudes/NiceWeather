@@ -145,12 +145,12 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		4582F1B6252C7BEA00A3F464 /* Extensioons */ = {
+		4582F1B6252C7BEA00A3F464 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				4526A92B252A60480081BD51 /* String+Ext.swift */,
 			);
-			path = Extensioons;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4582F215252CD9ED00A3F464 /* ViewModel */ = {
@@ -241,7 +241,7 @@
 				4582F216252CDA3300A3F464 /* Support */,
 				45E59B9B2527481A006FD2C5 /* Info.plist */,
 				451611BD252DA5A9009F68BE /* Managers */,
-				4582F1B6252C7BEA00A3F464 /* Extensioons */,
+				4582F1B6252C7BEA00A3F464 /* Extensions */,
 				4594FB5F2528BE6100C92639 /* Utilities */,
 				45E59B982527481A006FD2C5 /* Preview Content */,
 			);
