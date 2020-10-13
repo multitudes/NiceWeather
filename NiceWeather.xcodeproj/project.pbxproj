@@ -25,6 +25,7 @@
 		459FBAA9252DB65200173158 /* NiceWeatherSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FBAA8252DB65200173158 /* NiceWeatherSlowTests.swift */; };
 		459FBAD1252DC16800173158 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FBAD0252DC16800173158 /* XCTestCase+Ext.swift */; };
 		459FBADF252DC1B700173158 /* weathertest.json in Resources */ = {isa = PBXBuildFile; fileRef = 459FBADE252DC1B700173158 /* weathertest.json */; };
+		45B32CDF2530627F008559E8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B32CDE2530627E008559E8 /* test.swift */; };
 		45DAF5CC252F3C6C0096E12E /* utilitiesFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAF5CB252F3C6C0096E12E /* utilitiesFunctions.swift */; };
 		45E59B9325274819006FD2C5 /* NiceWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */; };
 		45E59B9525274819006FD2C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E59B9425274819006FD2C5 /* ContentView.swift */; };
@@ -84,6 +85,7 @@
 		459FBAAA252DB65200173158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459FBAD0252DC16800173158 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		459FBADE252DC1B700173158 /* weathertest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weathertest.json; sourceTree = "<group>"; };
+		45B32CDE2530627E008559E8 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		45DAF5CB252F3C6C0096E12E /* utilitiesFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilitiesFunctions.swift; sourceTree = "<group>"; };
 		45E59B8F25274819006FD2C5 /* NiceWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E59B9225274819006FD2C5 /* NiceWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceWeatherApp.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				45E59BD6252749E8006FD2C5 /* Location.swift */,
 				45E59BCC252748D9006FD2C5 /* CurrentWeather.swift */,
+				45B32CDE2530627E008559E8 /* test.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				45E59BD7252749E8006FD2C5 /* Location.swift in Sources */,
 				4582F1D3252C9A5000A3F464 /* HumidityView.swift in Sources */,
 				4582F1C6252C975000A3F464 /* WeatherDescriptionView.swift in Sources */,
+				45B32CDF2530627F008559E8 /* test.swift in Sources */,
 				4594FB2925289E9A00C92639 /* NetworkManager.swift in Sources */,
 				45E59BF825277117006FD2C5 /* ShareWeather.swift in Sources */,
 				4582F1C1252C958300A3F464 /* TemperatureView.swift in Sources */,

@@ -11,9 +11,12 @@ struct HumidityView: View {
     var humidity: String
     
     var body: some View {
-        Text("Humidity: \(humidity)")
+			HStack {
+				SFSymbols.humidity.accessibility(label: Text("wind direction"))
+				Text(humidity)
+			}
+       // Text("Humidity: \(humidity)")
             .font(.title2)
-            .bold()
             .opacity(0.8)
     }
 }
