@@ -226,12 +226,12 @@ This is a preview of the localised app with different language settings.
 
 <br>
 <p align="center">
-  <img src="ReadMe-Images/loc1.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/loc2.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/loc3.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="ReadMe-Images/loc4.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/loc5.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/loc6.jpg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="ReadMe-Images/loc1.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/loc2.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/loc3.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="ReadMe-Images/loc4.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/loc5.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/loc6.jpeg" width="115"  title="NiceWeather Localised">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
 
