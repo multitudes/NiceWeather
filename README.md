@@ -24,8 +24,8 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 
 <br>
 <p align="center">
-  <img src="ReadMe-Images/niceweather.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/niceweather1.png" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="ReadMe-Images/niceweather.jpeg" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/niceweather1.jpeg" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="ReadMe-Images/niceweather.gif" width="230"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
@@ -41,7 +41,7 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 
 <br>
 <p align="center">
-  <img src="ReadMe-Images/macNiceweather.png" width="700"  title="NiceWeather">
+  <img src="ReadMe-Images/macNiceweather.jpeg" width="700"  title="NiceWeather">
   </p>
 <br></br>
 
