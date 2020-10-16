@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
+	@AppStorage("weatherData",store: UserDefaults(suiteName: "group.com.laurentb.NiceWeather"))
+	var weatherData: Data = Data()
+
     @StateObject private var model: WeatherModel = WeatherModel()
     
     @State private var timer: Timer?
