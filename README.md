@@ -2,9 +2,8 @@
 <img src="icons/weather.svg" width="100"  title="app">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 # Nice Weather App
-
-### Weather App Challenge
-Build a small app which displays a weather forecast for Berlin using http://openweathermap.org/
+ 
+Small app which displays a weather forecast for Berlin using http://openweathermap.org/
 
 #### Requirements
 - Application can be easily extended to support more cities (list of cities included with app)
@@ -14,7 +13,7 @@ Build a small app which displays a weather forecast for Berlin using http://open
 #### Bonus
 - Alternative layout for bigger screens
 - Allow sharing of weather to other people
-- Unit test
+- Unit and UI tests 
 
 ## The execution
 
