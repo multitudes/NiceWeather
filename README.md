@@ -33,8 +33,8 @@ It will work on iPhone iPad and even on macOS using Catalyst (the share button i
 
 <br>
 <p align="center">
-  <img src="ReadMe-Images/iPad-niceweather.png" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="ReadMe-Images/iPad-niceweather2.png" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="ReadMe-Images/iPad-niceweather.jpeg" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="ReadMe-Images/iPad-niceweather2.jpeg" width="400"  title="NiceWeather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <br></br>
  
