@@ -60,7 +60,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack{
-                BackgroundGradient(geo: geo)
+                BackgroundGradient()
                 
                 // this is to be able to use the app with catalyst on macOS
                 if Device.isiPhone || Device.isiPad {
