@@ -13,6 +13,7 @@
 		454BB9F7253B237400FA9523 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454BB9F6253B237400FA9523 /* WeatherWidgetView.swift */; };
 		454BBA02253B257900FA9523 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454BB9F6253B237400FA9523 /* WeatherWidgetView.swift */; };
 		454BBA08253B25A100FA9523 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */; };
+		454BBA27253B368500FA9523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E59B962527481A006FD2C5 /* Assets.xcassets */; };
 		455E6FA5252B2C47000F0058 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E6FA4252B2C47000F0058 /* ShareButton.swift */; };
 		4582F19F252C6FE700A3F464 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F19E252C6FE700A3F464 /* BackgroundGradient.swift */; };
 		4582F1AA252C76B200A3F464 /* CityTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582F1A9252C76B100A3F464 /* CityTitle.swift */; };
@@ -510,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454BBA27253B368500FA9523 /* Assets.xcassets in Resources */,
 				45D22ED6253B22FF005560CE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
