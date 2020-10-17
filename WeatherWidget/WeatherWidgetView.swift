@@ -37,15 +37,18 @@ struct WeatherWidgetView: View {
 					Spacer()
 
 					TempView(data: data)
-
-
 				}
-				.padding(.all, 10.0)
+				.padding(.all)
+
 				if widgetFamily == .systemMedium,
 					let photoName = data.photoName {
 						Image(photoName)
-							.resizable().padding()
-					}
+							.resizable()
+						//	.scaledToFit()
+							//.frame(width: 100, height: 100)
+							.padding()
+							.background(Color(.blue)).opacity(0.8)
+				}
 			}
 		}
 	}
@@ -58,21 +61,19 @@ struct WeatherCityView: View {
 		HStack {
 			VStack(alignment: .leading) {
 				Text("City")
-					.font(.body)
-					.foregroundColor(.gray)
-					.bold()
+					.font(.body).bold()
 
 				Spacer()
 
 				Text(data.city)
 					.font(.title)
 					.bold()
-					.foregroundColor(.gray)
 					.minimumScaleFactor(0.8)
 			}
 			.padding(.all, 8.0)
 			Spacer(minLength: 0)
 		}
+		.foregroundColor(.black).opacity(0.8)
 		.background(ContainerRelativeShape().fill( Color(.cyan))).opacity(0.8)
 
 	}
@@ -87,14 +88,13 @@ struct TempView: View {
 			Text("Temp: \(measurementFormatter.string(from: data.temperature))")
 				.font(.body)
 				.bold()
-				.foregroundColor(.gray)
 
 			Text("fetched: \(data.fetchDate, style: .relative) ago")
 				.font(.caption)
 				.bold()
-				.foregroundColor(.gray)
 				.minimumScaleFactor(0.8)
 		}
+		.foregroundColor(.black).opacity(0.8)
 	}
 }
 
