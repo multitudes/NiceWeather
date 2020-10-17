@@ -44,8 +44,6 @@ struct WeatherWidgetView: View {
 					let photoName = data.photoName {
 						Image(photoName)
 							.resizable()
-						//	.scaledToFit()
-							//.frame(width: 100, height: 100)
 							.padding()
 							.background(Color(.blue)).opacity(0.8)
 				}
@@ -89,10 +87,10 @@ struct TempView: View {
 				.font(.body)
 				.bold()
 
-			Text("fetched: \(data.fetchDate, style: .relative) ago")
+			Text("\(data.fetchDate, style: .relative) ago")
 				.font(.caption)
 				.bold()
-				.minimumScaleFactor(0.8)
+				.minimumScaleFactor(0.5)
 		}
 		.foregroundColor(.black).opacity(0.8)
 	}

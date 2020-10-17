@@ -10,24 +10,16 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+			SimpleEntry(date: Date(), weather: .previewData)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+			let entry = SimpleEntry(date: Date(), weather: .previewData)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
+        let entries: [SimpleEntry] = [SimpleEntry(date: Date(), weather: .previewData)]
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
@@ -36,13 +28,23 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+		let weather: WeatherWidgetData
+}
+
+struct PlaceholderView: View {
+
+		var body: some View {
+			WeatherWidgetView(data: .previewData)
+				//.isPlaceholder(true) not yet avalaible
+				.redacted(reason: .placeholder)
+		}
 }
 
 struct WeatherWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+			WeatherWidgetView(data: entry.weather)
     }
 }
 
@@ -54,14 +56,17 @@ struct WeatherWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WeatherWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("NiceWeather")
+        .description("Display your favourite weather!")
+				.supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct WeatherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherWidgetEntryView(entry: SimpleEntry(date: Date()))
+			WeatherWidgetView(data: .previewData)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+			PlaceholderView()
+						.previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
