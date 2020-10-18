@@ -59,18 +59,18 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geo in
+					let screenSize = geo.size
             ZStack{
                 BackgroundGradient()
                 
                 // this is to be able to use the app with catalyst on macOS
                 if Device.isiPhone || Device.isiPad {
-                    ShareButton(isSharedPresented: $isSharedPresented, geo: geo)
+                    ShareButton(isSharedPresented: $isSharedPresented)
                 } else {
                     EmptyView()
                 }
                 
-                VStack(spacing: UIHelper.createSpacing(geo: geo)) {
-                    Spacer()
+                VStack(spacing: screenSize.height/50 + screenSize.width/100) {
                     
                     CityTitle(city: weatherCity, geo: geo)
                     
@@ -87,9 +87,7 @@ struct ContentView: View {
                     WindRose(windSpeed: windSpeed, direction: direction)
                     
                     CityPicker(citySelection: $citySelection, model: model)
-                    
-                    Spacer()
-                    
+
                 }
             }
             .sheet(isPresented: $isSharedPresented) {

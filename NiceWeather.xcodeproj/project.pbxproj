@@ -11,6 +11,7 @@
 		4515A41D252CF93900A8E51E /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515A41C252CF93900A8E51E /* DateTime.swift */; };
 		4521DABA253C3D7C00645A65 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4521DAB9253C3D7C00645A65 /* Intents.intentdefinition */; };
 		4521DAC0253C3D9800645A65 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4521DAB9253C3D7C00645A65 /* Intents.intentdefinition */; };
+		4521DADA253C828500645A65 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521DAD9253C828500645A65 /* UIHelpers.swift */; };
 		4526A92C252A60480081BD51 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526A92B252A60480081BD51 /* String+Ext.swift */; };
 		454BB9F7253B237400FA9523 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454BB9F6253B237400FA9523 /* WeatherWidgetView.swift */; };
 		454BBA02253B257900FA9523 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454BB9F6253B237400FA9523 /* WeatherWidgetView.swift */; };
@@ -99,6 +100,7 @@
 		4515A411252CF4FA00A8E51E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4515A41C252CF93900A8E51E /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		4521DAB9253C3D7C00645A65 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		4521DAD9253C828500645A65 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		4526A92B252A60480081BD51 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		454BB9F6253B237400FA9523 /* WeatherWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidgetView.swift; sourceTree = "<group>"; };
 		455E6FA4252B2C47000F0058 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				4582F1F0252CA60C00A3F464 /* Constants.swift */,
 				4515A411252CF4FA00A8E51E /* Device.swift */,
 				45DAF5CB252F3C6C0096E12E /* utilitiesFunctions.swift */,
+				4521DAD9253C828500645A65 /* UIHelpers.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				4594FB15252881ED00C92639 /* WindRose.swift in Sources */,
 				45E59BCD252748D9006FD2C5 /* CurrentWeather.swift in Sources */,
 				4582F1CB252C997700A3F464 /* TempMaxMin.swift in Sources */,
+				4521DADA253C828500645A65 /* UIHelpers.swift in Sources */,
 				45E59BD22527497E006FD2C5 /* WeatherModel.swift in Sources */,
 				45E59B9325274819006FD2C5 /* NiceWeatherApp.swift in Sources */,
 				4526A92C252A60480081BD51 /* String+Ext.swift in Sources */,

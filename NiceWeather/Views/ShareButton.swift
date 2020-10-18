@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct ShareButton: View {
-    
-    @Binding var isSharedPresented: Bool
-    
-    var geo: GeometryProxy
-    
-    var body: some View {
-        
-        Button(action: {
-            self.isSharedPresented = true
-        }) {
-            SFSymbols.shareButton
-                .font(Font.system(size: UIHelper.createShareButtonFontAdjustment(geo: geo)))
-                .accessibility(label: Text("share"))
-            
-        }
-        .position(UIHelper.createShareButtonPaddingAdjustment(geo: geo))
-        .accentColor(.purple)
-    }
+
+	@Binding var isSharedPresented: Bool
+
+	var body: some View {
+		GeometryReader { geometry in
+			Button(action: {
+				self.isSharedPresented = true
+			}) {
+				SFSymbols.shareButton
+					.font(Font.system(size: UIHelper.createShareButtonFontAdjustment(geo: geometry)))
+					.accessibility(label: Text("share"))
+
+			}
+			.position(UIHelper.createShareButtonPaddingAdjustment(geo: geometry))
+			.accentColor(.purple)
+		}
+	}
 }
