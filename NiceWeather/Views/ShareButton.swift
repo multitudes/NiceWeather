@@ -17,8 +17,9 @@ struct ShareButton: View {
 				self.isSharedPresented = true
 			}) {
 				SFSymbols.shareButton
-					.font(Font.system(size: UIHelper.createShareButtonFontAdjustment(geo: geometry)))
 					.accessibility(label: Text("share"))
+					.font(Font.system(size: UIHelper.createShareButtonFontAdjustment(geo: geometry)))
+
 
 			}
 			.position(UIHelper.createShareButtonPaddingAdjustment(geo: geometry))
